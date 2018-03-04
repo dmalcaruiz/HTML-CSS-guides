@@ -1,0 +1,2285 @@
+﻿CSS Guide/Summary
+
+Since some terms involved here can be very conceptually similar, it won't be hard to confuse them with one another (or with unrelated words) if you don't first memorize their meanings.
+Most terms covered in this guide will depend on the understanding of certain specialized concepts.
+This is written so each and every specialized term and concept used will have been already defined in a previous section.
+If you read this carefully and in order most concepts will be clear.
+
+CSS (Cascading Style Sheets):
+
+    CSS means Cascading Style Sheets.
+    CSS documents are essentially sheets of code that format ("apply styles") HTML documents.
+    CSS styles are applied in the order the code is read by the browser (top to bottom), with a few priority exceptions.
+    This means that most of the time, the style that is read last will be the one applied in the end, overriding any equal/similar style that is applied to the same thing.
+
+    Cascading is the process of combining several styles, in different style sheets and resolving conflicts between them.
+
+CSS Declarations, Elements, Properties and Values:
+
+    [Elements] represent some kind of structure or semantic and consist of a start tag, content, and an end tag in HTML.
+    [Properties] edit the properties of an element and their [values] determine how they do so.
+    They consist of a [property]/[value] pair.
+    All elements have default property values and all property values can be changed.
+    Elements can be selected with CSS selectors and can be styled by having their properties changed.
+    [CSS Declarations] are all property/value pairs nested (between curly brackets, {}) within a selected element.
+
+        element {
+            property: value;
+        }
+
+    The code snippet (fragment of code) above shows the syntaxis of a CSS declaration.
+    There is a selected element and a nested property/value pair within.
+
+    Press [tab] on your keyboard to create the space preceding "property: value".
+
+CSS Comments:
+
+    CSS comments won't be read by the browser.
+    They are useful for developers as they can leave any comment explaining a code snippet's purpose without interfering with the code.
+    CSS Comments must start with a slash followed by an asterisk (/*) and end with an asterisk followed by a slash (*/).
+
+        /* This is a CSS Comment */
+
+Frequently Used Property Values (Global Values):
+
+    Some values are always present in element property/value pairs and thus haven't been considered for further property examples.
+    You can still try them in your properties and they will always work.
+
+	{property: initial;}
+        	Displays the default element value.
+	{property: inherit;}
+		Makes the element inherit its values from its parent.
+
+Important Declaration:
+
+    Browsers apply CSS styles in the order the code is read by the browser.
+    If there are two equal properties applying to the same element, the latter will be applied as it is read later by the browser.
+    However, if the !important declaration is applied to a property, that property will override any equal properties that do not use the !important keyword, ignoring if they were declared before or after.
+
+        element {
+            property: style-1 !important;
+            property: style-2;
+        }
+
+    In the example above, style-1 will be applied even though style two would be read later by the browser.
+    This is because the property paired with style-1 has the !important declaration applied, and the property with style-2 paired doesn't.
+
+CSS Element Selectors:
+
+    Selectors are used to select a specific element in an HTML page and style it in CSS (by changing its properties).
+
+    Universal Selector. Selects all the elements. May slow down the page load.
+
+        * {   
+            property: value;
+        }
+
+    Root Element Selector. Selects the page's root element (always the html element). Does NOT slow the page load.
+
+        :root {
+            property: value;
+        }
+
+    Tag Selector. Selects an element/s by its tag (<tag></tag>).
+
+        tag {
+            property: value;
+        }
+    
+    ID Selector. Selects an element by its id attribute value (id="value").
+
+        #id {
+            property: value;
+        }
+
+    Class Selector. Selects an element/s by its class attribute value (class="value").
+
+        .class {
+            property: value;
+        }
+
+    Descendant Selector. Selects an element/s whether it directly or indirectly descends from other selected element/s (ancestor descendant).
+        
+        div a {
+            property: value;
+        }
+        
+        .container p {
+            property: value;
+        }
+
+    Children Selector. Selects an element/s only if it is directly descends other selected element/s (parent > child).
+
+        div > p {
+            property: value;
+        }
+    
+    General Sibling Selector. Selects an element/s in the same HTML nested level as another element/s (sibling 1 ~ sibling 2).
+
+        section ~ div {
+            property: value;
+        }
+
+    Adjacent Sibling Selector. Selects an element/s that is situated directly after another element/s (sibling 1 + sibling 2).
+
+        table + div {
+            property: value;
+        }
+
+    Multiple Selector. Selects many elements by separating them with a comma.
+
+        div a, .container p,  {
+            property: value;
+        }
+
+    HTML Attribute Selector. Selects an element/s with a specific attribute.
+
+        [attribute] {
+            property: value;
+        }
+
+    HTML Attribute Value Selector. Selects an element/s with a specific attribute and attribute value.
+
+        [attribute="www.website.com"] {
+            property: value;
+        }
+
+    HTML Attribute Value String Selector. Selects an element/s with a specific attribute and a specified value in string form.
+
+        [attribute*=attribute-value]{
+            property: value;
+        }
+
+Pseudo-Classes and Pseudo-Elements:
+
+    [Pseudo-classes] are special states of an element.
+        For example, they can be used to:
+        Style an element when a user mouses over it.
+        Style visited and unvisited links differently.
+        Style an element when it gets focus.
+
+        :root
+            The document's root element (always the HTML element).
+
+        element:hover
+            The current element being hovered on by a mouse.
+            In order to be effective on a link, it must come after :link and :visited (if they are present).
+
+        #id:target
+            The current active id tag element.
+            (clicked on a URL containing that id tag)
+
+        element:first-of-type
+            Every first element (of its type) of its parent.
+        element:last-of-type
+            Every last element (of its type) of its parent.
+        element:nth-of-type(n) :nth-of-type(even/odd)
+            Every n number element (of its type) of its parent.
+        element:nth-last-of-type(n) :nth-last-of-type(even/odd)
+            Every n number element (of its type) of its parent (counting from the last element of its type backwards).
+        element:only-of-type
+            Every element (that is the only of its type) of its parent.
+
+        element:first-child
+            Every element (of its type) that is the first child of its parent.
+        element:last-child
+            Every element (of its type) that is the last child of its parent.
+        element:nth-child(n)	:nth-child(even/odd)
+            Every element (of its type) that is the n number child of its parent.
+        element:nth-last-child(n) :nth-last-child(even/odd)
+            Every element (of its type) that is the n number child of its parent (counting from the last child backwards).
+        element:only-child
+            Every element (of its type) that is the only child of its parent.
+
+        element:not(element)
+            Every element that isn't a specified type element.
+        element:empty
+            Every epecified type element that has no children.
+
+        input:checked
+            Every checked input element.
+        input:disabled
+            Every disabled input element.
+        input:enabled
+            Every enabled input element.
+        input:focus
+            An input element that currently has focus.
+        input:in-range
+            An input element with a value within a specified range.
+        input:out-of-range
+            An input element with a value outside a specified range.
+        input:invalid
+            An input element with an invalid value.
+        input:valid
+            An input element with a valid value.
+        input:required
+            An input element with the "required" attribute specified.
+        input:optional
+            An input element with no "required" attribute.
+        input:read-only
+            An input element with a "readonly" attribute specified.
+        input:read-write
+            An input element with no "readonly" attribute.
+
+        a:link
+            A normal, unvisited link.
+        a:visited
+            A link the user has visited.
+        a:hover
+            A link when the user mouses over it.
+        a:active
+            A link the moment it is clicked.
+
+        element:lang(language)
+            Selects every specified type element with a lang attribute value starting with a specified language code string. (E.g. en, es, pt, fr).
+
+    [Pseudo-elements] are specified parts of an element.
+        For example, they can be used to:
+        Style the first letter, or line, of an element.
+        Insert content before, or after, the content of an element.
+            
+        element::before
+            The space directly before every element of a specified type.
+        element::after
+            The space directly after every element of a specified type.
+
+            The before and after pseudoelements have property called content, which serves to insert generated content.
+                {content: "string";}
+                    Defines the content as the text you specify (as a string).
+                {content: counter;}
+                    Defines the content as a counter.
+                {content: open-quote;}
+                    Defines the content as an opening quote.
+                {content: close-quote;}
+                    Defines the content as a closing quote.
+                {content: url(content.png);}
+                    Defines the content to be some kind of media (an image, a sound, a video, etc.).
+
+        element::first-letter
+            The first letter of every element of a specified type.
+            The following properties can be applied to the first letter pseudo-element: font, color, background, margin, padding, border, text-decoration, vertical-align (only if "float" is "none"), text-transform, line-height, float, clear.
+
+        element::first-line
+            The first line of every element of a specified type.
+            The following properties can be applied to the first line pseudo-element: font, color, background, word-spacing, letter-spacing, text-decoration, vertical-align, text-transform, line-height, clear.
+
+        ::selection
+            The portion of an element that is being currently selected by the user.
+            The following properties can be applied to the selection pseudo-element: color, background, cursor and outline.
+
+Pseudo-Class and Pseudo-Element Selectors:
+
+    Pseudo-class and Pseudo-element selectors are used to select states and/or specific parts of elements.
+    They first declare the selected element, and specify the pseudo-class or pseudo-element directly after.
+    Some pseudo-class and pseudo-element selectors only work on certain specified elements (shown in Pseudo-Classes and Pseudo-Elements).
+    The :root pseudo-class and the ::selection pseudo-element are the only ones that don't require an element specified before them.
+
+    element:pseudo-class {
+        property: value;
+    }
+
+    element::pseudo-element {
+        property: value;
+    }
+
+    :root {
+        property: value;
+    }
+
+    ::selection {
+        property: value;
+    }
+
+Var() Functions:
+
+    var() functions are used to create custom names for property values. This helps whenever a value is repeated many times within a page, and is hard to manually replicate, so its simpler to give it a custom name and insert that name as property value when needed.
+    Whenever that custom name is declared within a property, the browser will retrieve the predefined property value and replace the name with it.
+
+    You need to first define the custom name (it must start with two dashes, --) and define the property value.
+    It is important to do this within the root pseudo-class, as this will make the var() function work anywhere in the page without slowing the page.
+
+    After the custom named property value is declared, the var function is ready to use. Just write the custom name between the var parentheses and the browser will retrieve the predefined value.
+
+        :root {
+            --company-color-1: coral;
+            --company-color-2: dodgerblue;
+        }
+
+        div {
+            background-color: var(--company-color-1);
+        }
+
+At-Rules:
+
+    At-rules are statements that provide CSS with instructions on how to perform or how to behave.
+    Each statement begins with an @ followed directly by one of several available keywords that act as the identifier for what CSS should do.
+    At-rules can be divided into two categories, conditional and non-conditional at-rules.
+
+    Non-Conditional Rules:
+
+            @at-rule content;
+
+        Non-conditional rules do NOT nest CSS declarations and/or other at-rules.
+        Non-conditional rules must end with a semicolon (;).
+
+        The charset at-rule (@charset ;) and the import at-rule (@import ;) are non-conditional at-rules.
+        These at-rules will be subsequently explained.
+
+    Conditional Rules:
+
+            @at-rule (query) {
+                property: value;
+            }
+
+        Conditional at-rules can nest CSS declarations and/or other at-rules.
+        Conditional at-rules nest their content with curly brackets.
+
+        Query definition (within this context): questionnaire.
+
+        Conditional at-rules will apply their content if the browser meets certain criteria defined by a conditioned query.
+
+        Conditional at-rules consist of a query followed by one or more CSS declarations.
+        The query asks if certain conditions are met, and then resolves as either [true] or [false].
+        If the result is [true], the at-rule's contents will be applied to the document.
+        If the result is [false], the browser will ignore the rest of the at-rule and continue reading the rest of the style sheet.
+
+        Logical Operators:
+
+            @at-rule (query) {}
+                The when no operators are used things are true about the browser, use the CSS inside.
+
+            @at-rule (query) and (query) {}
+                The [and] operator is used for combining multiple features together into a single query, requiring each chained feature to return true in order for the query to be [true].
+
+            @at-rule not (query) {}
+                The [not] operator is used to negate a query, returning [true] if the query would otherwise return [false]. If present in a comma-separated list, it will only negate the specific query to which it is applied.
+
+            @at-rule (query) or (query) or (query) {}
+                Each query in an [or] separated query list is treated separately from the others. If any of the queries in the list is [true], the entire statement returns [true].
+
+        The media at-rule (@media () {}) and the supports at-rule (@supports () {}) are conditional at-rules.
+        These at-rules will be subsequently explained.
+
+    Exceptions:
+
+            @at-rule {
+                property: value;
+            }
+
+        Non-conditional at-rules can nest CSS declarations and/or other at-rules.
+        Non-conditional nested at-rules must contain specific content depending on their at-rules.
+
+        The font-face at-rule (@font-face {}), the keyframes at-rule (@keyframes {}) are non-conditional nested at-rules.
+        These at-rules will be subsequently explained.
+
+        
+Character Set At-Rule:
+
+    The character set at-rule is a non-conditional at-rule.
+    This at-rule should be situated at the top level of your code, before anything.
+
+    The charset at-rule should only be used once, and in only one stylesheet, no matter how many stylesheets are linked to the first one.
+    If more than one charset is defined, the first one will be only one used.
+
+	@charset "UTF-8";
+		Specifies the encoding of the characters acceptable for use in the style sheet to Unicode UTF-8 (8-bit Unicode Transformation Format)(capable of representing any Unicode character).
+
+Visibility Property:
+
+    Specifies whether an element is visible or not.
+
+    {visibility: visible;}
+        Default. The element is visible.
+
+    {visibility: hidden;}
+        The element is invisible (but still takes up space).
+
+Measurement Units (relevant units):
+
+    Some concepts in this section are hard to grasp at first.
+    If you don't get them, it's okay, as many concepts within it will be subsequently explained in other sections.
+    For now, ignore this section altogether if you don't understand it.
+
+    Pixels (px):
+
+        Fixed unit based on the device's logical pixel resolution.
+
+        Physical pixel resolution is the real quantity of pixels on the device's screen.
+        Logical pixel resolution is the virtual quantity of pixels the device would have based on an typical 2010s computer screen.
+
+        A typical 2010 full screen desktop was 24" at 1920 x 1080 resolution. Imagine if the monitor shrunk, but kept the same resolution; distinguishing things on screen would be hard because they would be so small.        
+
+        Physical resolution of the original iPhone: 960 x 640.
+        Logical resolution of the original iPhone: 480 x 320.
+
+            Physical Resolution / Logical Resolution = Device Pixel ratio.
+
+        iPhone Device Pixel Ratio: 2
+
+            Physical Resolution / Device Pixel Ratio = Logical Resolution.
+
+        The reason the pixel ratio was created is because phone screens got higher resolutions, and will keep on getting them.
+        And if every device screen still had a ratio of 1 logical pixel per physical pixel, the websites would display too small to even be seen appropriately.
+
+    Relative Percentage (%):
+
+        For height and width properties, it is relative the the parent element's width or height.
+        For fonts, it is relative to the current selected element font size, and if there is none, the closest ancestor element's font size.
+        For anything else, it varies, but usually makes sense within its context.
+
+    Fraction (fr):
+        
+        Fractional unit, 1fr is for 1 part of the available container space.
+        You can mix [fr] values with fixed and percentage values.
+        The [fr] values will be divided between the space that’s left after what’s taken by the other values.
+
+        Say you have 3 columns of 1fr, 1fr and 1fr respectively.
+        Every column will occupy 30% or 1/3 of the available container space.
+
+        Say you have 3 columns of 1fr, 3fr and 1fr respectively.
+        The first column will be 25% or 1/4, the second 50% or 1/2 and the third 25% or 1/4 (each occupying a portion of the available container space).
+
+        Say you have 4 columns of 300px, 10%, 1fr and 1fr respectively; all in an 800px container.
+        The first column will be 300px, the second 80px (10% of 800px), the third and fourth columns will be 210px (each occupying 1/2 of the remaining space).
+
+    REM (rem):
+        
+        Measurement relative to the device's root element's font size.
+        The root element is always the html element.
+        If no font size is specified in :root, the default size will be set to 16px.
+        If the font size is set to 100% in root, the size will also be set to 16px.
+
+    EM (em):
+
+        Measurement relative to the current selected element's font size, or if none is specified, the closest inherited font size.
+        If no font size is set to the current selected element, and no font size is to be inherited from anywhere, the default size will be set to 16px.
+
+    Viewport Width (vw):
+
+        The [viewport] is the user's visible area of a page.
+        1vw is equal to 1% of the width of the visible page area.
+        100vw is equal to 100% of the width of the visible page area.
+        
+        No matter how much you scale your browser window, an item sized with vw will scale along with it.
+        Useful for making text and images scale along with the visible page area.
+
+Color:
+
+    Color related properties are always present in CSS.
+    There are many ways of refering to color in CSS.
+    CSS supports 140 standard color names.
+    No negative values are allowed.
+
+    {green;}
+        Color name (keyword).
+
+	{rgb(0, 255, 0);}
+		RGB (Red, Green, Blue).
+        Each color value ranges from 0 to 255 measuring the saturation and luminosity of each color (256 values including 0).
+        RGB is a way to represent color digitally, so it works in bits (in powers of 2 for binary logic simplicity).
+        2^8 = 256, so there are 256 values for each hue (from 0 to 255).
+        There are a total 16,777,216 combinations for the three color hues.
+        0 is equal to black and 255 is equal to the maximum screen luminosity and saturation for each color.
+        If all three colors have a value of 255, the resulting color will be white.
+
+	{rgba(0, 255, 0, 0.5);}
+		RGBA (Red, Green, Blue, Alpha).
+        Alpha stands for transparency. 0 is invisible and 1 is fully visible.
+
+    {#0f0;}
+    {#00ff00;}
+	Hexadecimal value color.
+        Works like rgb, but it is expressed in a shorter code (6 values instead of 9).
+
+        The character values are the following from 0 to 15 respectively (16 values in total):
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A(10), B(11), C(12), D(13), E(14), F(15).
+
+        The six characters provided can be separated in pairs representing red, green and blue respectively.
+
+        Each two characters can have a maximum value of 255 (minimum value of 0).
+        The first value of each pair has its value multiplied by 16.
+        The second value of each pair has its value stay the same and added to the first one.
+        15 * 16 = 240, 240 + 15 = 255 (256 values including 0).
+
+    {hsl(120, 100%, 50%);}
+	HSL (Hue, Saturation, Luminosity).
+        HSL works in degrees in its first section (like a color wheel), and in percentages in the following two.
+        0 degrees is neutral red, 90 degrees is yellow green, 180 degrees is cyan, 270 degrees is violet.
+        0% luminosity is black, 100% luminosity is white.
+        0% saturation is colorless, 100% saturation is fully saturated.
+
+    {hsla(120, 100%, 50%, 1.00);}
+	HSLA (Hue, Saturation, Luminosity, Alpha). Alpha stands for transparency. 0 is invisible and 1 is fully visible.
+
+	{opacity: 0.5;}
+		Specifies the element opacity. 0 is invisible and 1 is fully visible.
+        This property can be applied to any element.
+        This property also applies to any child elements.
+
+Height and Width Properties:
+
+    All elements are essentially a box with height and width property values.
+    The height and width properties are used to set the height and width of an element.
+    Length is represented in px (pixels) or in % (percent of the containing block).
+    No negative values are allowed.
+
+        {height: 50%;}
+        {width: 500px;}
+
+    A common problem occurs when the browser window is smaller than the width or height of an element (e.g. 500px). The browser adds a horizontal scrollbar to the page and cuts the element out of view in these cases.
+    Using max-height/max-width (instead of height/width) will improve the browser ability to handle small windows by shrinking the element so it is fully visible in a smaller size (it is also necessary to set the margin property value to auto - will be subsequently explained).
+
+        {max-height: 500px;}
+        {max-width: 50%;}
+
+    The max-width property is useful when applied to images as it makes them automatically resize to the window's demands.
+    
+    Any container element with no fixed (px) height or width will resize to fit any element within its content-box.    
+
+    It is highly recommended that container blocks (e.g.: div, footer, section, etc.) have no fixed (pixels) height or width, so they rely solely on the responsiveness of their content.
+
+Display Block, Display Inline, Display Inline-Block and Display Table:
+
+    Every element on a web page is a rectangular box.
+    The display property determines how that box behaves.
+
+    {display: block;}
+        Defines a block container.
+        Always starts on a new line and takes up the full line width available (stretches out to the left and right as far as it can).
+        Height and width properties will have an effect.
+        Vertically based display (can't move horizontally within normal document flow unless floated).
+
+    {display: inline;}
+        Defines an inline container.
+        It does NOT start on a new line and only takes up as much line width as necessary.
+        Height and width properties will NOT have an effect.
+        Horizontally based display (can't move vertically within normal document flow, top and bottom margins are inexistent).
+
+    {display: inline-block;}
+        Defines an inline-block container.
+        It does NOT start on a new line and only takes up as much line width as necessary.
+        Height and width properties will have an effect, as opposed to the inline display.
+        Both vertically and horizontally based display.
+
+    {display: table;}
+        Defines a containerthat behaves like a table element.
+        Always starts on a new line and only takes up as much line width as necessary.
+        Height and width properties will have an effect.
+
+    It is highly recommended to use the inline-block display often when doing a website template, as it greatly reduces common setbacks that occur with the block, inline and table display properties.
+
+    Other display properties of importance will be subsequently explained.    
+
+Border and Outline Properties:
+
+    [Borders] go directly outside the content box.
+        The style property is required to view the borders or outlines.
+        No negative values are allowed.
+
+        {border-style: solid;}
+            Specifies the border style as solid.
+        {border-style: dotted;}
+            Specifies the border style as line with small dashes.
+        {border-style: dashed;}
+            Specifies the border style as dashed.
+        {border-style: double;}
+            Specifies the border style as double lines.
+        {border-style: ridge;}
+            Specifies the border as a 3D line.
+        {border-style: inset;}
+            Specifies the border as an inset 3D box.
+        {border-style: outset;}
+            Specifies the border as an outset 3D box.
+
+        {border-color: green}
+            Specifies the border color.
+
+        {border-width: thin;}
+            Specifies the border width as 1px.
+        {border-width: medium;}
+            Specifies the border width as 2px.
+        {border-width: thick;}
+            Specifies the border width as 4px.
+        {border-width: 10px;}
+            Specifies the width of [all] the borders.
+        {border-width: 2px 10px;}
+            Specifies the width of the [vertical] borders and the [horizontal] borders respectively.
+        {border-width: 2px 10px 4px;}
+            Specifies the width of the [top] border, the [horizontal] borders and the [bottom] border respectively.
+        {border-width: 2px 10px 4px 20px;}
+            Specifies the width of the [top] border, [right] border, [bottom] border and [left] border respectively (clockwise).
+
+        {border: green 5px solid;}
+            Shorthand property for setting all the border properties into a single property.
+            The properties can be set in any order.
+
+        {border-top-style: solid;}
+            Specifies the style of the [left] border.
+        {border-top-color: green;}
+            Specifies the color of the [left] border.
+        {border-top-width: medium;}
+            Specifies the width of the [left] border.
+
+            The [top] value can be replaced with [right], [left] and [bottom].
+
+        {border-radius: 50%;}	
+        {border-radius: 10px;}
+            Specifies the border radius for [all] the corners.
+        {border-radius: 10px 20px;}
+            Specifies the border radius for the [top left side corner and the bottom right side corner] and the [top right side corner and the bottom left side corner], respectively.
+        {border-radius: 10px 20px 30px;}
+            Specifies the border radius for the [top left] corner, the [top right side corner and the bottom left side corner] and the [bottom right] corner respectively.
+        {border-radius: 10px 20px 30px 40px;}
+            Specifies the border radius for the [top left] corner, the [top right] corner, the [bottom right] corner and the [bottom left] corners respectively (clockwise).
+
+            If the border radius is set to 50% it will create a perfectly roundedn border.
+
+        {border-top-left-radius: 10px;}
+            Specifies the border radius for the [top left] corner.
+        {border-top-right-radius: 20px;}
+            Specifies the border radius for the [top right] corner.
+        {border-bottom-right-radius: 30px;}
+            Specifies the border radius for the [bottom right] corner.
+        {border-bottom-left-radius: 40px;}
+            Specifies the border radius for the [bottom left] corner.
+
+    [Outlines] go directly outside the borders and follow their shape.
+        No negative values are allowed.
+
+        {outline-style: solid;}
+            Specifies the outline style as solid.
+        {outline-style: dotted;}
+            Specifies the outline style as line with small dashes.
+        {outline-style: dashed;}
+            Specifies the outline style as dashed.
+        {outline-style: double;}
+            Specifies the outline style as double lines.
+        {outline-style: ridge;}
+            Specifies the outline as a 3D line.
+        {outline-style: inset;}
+            Specifies the outline as an inset 3D box.
+        {outline-style: outset;}
+            Specifies the outline as an outset 3D box.
+
+        {outline-color: green;}
+            Specifies the outline color.
+
+        {outline-width: thin;}
+            Specifies the outline width as 1px.
+        {outline-width: medium;}
+            Specifies the outline width as 2px.
+        {outline-width: thick;}
+            Specifies the outline width as 4px.
+
+        {outline: green 5px solid;}
+            Shorthand property for setting all the outline properties into a single property.
+            The properties can be set in any order.
+
+        {outline-offset: 15px;}
+            Offsets the outline away from the border in a fixed distance.
+
+Margins and Padding Properties:
+
+    [Margins] are space around elements, outside of any defined borders.
+        You can set the margin property to auto to horizontally center the element within its container. 
+        The element will then take up the specified width, and the remaining space will be split equally between the left and right margins.
+        No negative values are allowed.
+
+        {margin-top: 150px;}
+        {margin-right: 100px;}
+        {margin-bottom: 50px;}
+        {margin-left: 0px;}
+            Specifies the margin size for each side individually.
+
+        {margin: 150px;}
+            Specifies the width of [all] the margins.
+        {margin: 150 100px;}
+            Specifies the width of the [vertical] margins and the [horizontal] margins respectively.
+        {margin: 150px 100px 50px;}
+            Specifies the width of the [top] margin, the [horizontal] margins and the [bottom] margin respectively.
+        {margin: 150px 100px 50px 0px;}
+            Specifies the width of the [top] margin, [right] margin, [bottom] margin and [left] margin respectively (clockwise).
+
+        {margin: auto;}
+            Horizontally centers the element within its container.
+            If margin: auto centered the object vertically as well, it would bring more problems than solutions.
+
+        Top and bottom margins of different consecutive elements (vertical) are sometimes collapsed into a single margin that is equal to the largest of the two margins.
+        The collapse does NOT happen with the right and left margins.
+
+            h1 {
+                margin-bottom: 50px;
+            }
+
+            h2 {
+                margin-top: 20px;
+            }
+
+        In the code snippet above, the h1 element has a bottom margin of 50px and the h2 element has a top margin set to 20px.
+        Common sense would seem to suggest that the vertical margin between the h1 and the h2 would be a total of 70px (50px + 20px).
+        But due to margin collapse, the actual margin ends up being 50px.
+
+    [Padding] is the space around an element's content, inside of any defined borders.
+        No negative values are allowed.
+
+        {padding-top: 150px;}
+        {padding-right: 100px;}
+        {padding-bottom: 50px;}
+        {padding-left: 0px;}
+            Specifies the padding size for each side individually.
+
+        {padding: 25px;}
+            Specifies the width of [all] the margins.
+        {padding: 25px 50px;}
+            Specifies the width of the [vertical] margins and the [horizontal] margins respectively.
+        {padding: 25px 50px 75px;}
+            Specifies the width of the [top] margin, the [horizontal] margins and the [bottom] margin respectively.
+        {padding: 25px 50px 75px 100px;}
+            Specifies the width of the [top] margin, [right] margin, [bottom] margin and [left] margin respectively (clockwise).
+
+Box Sizing:
+
+    Any container contains within their content box another element's content, side margins and all borders. Top and bottom margins of elements inside overflow when posible.
+    Any container element with no fixed (px) height or width will resize to fit any element within its content-box. 
+    It is highly recommended that container blocks (e.g.: div, footer, section, etc.) have no fixed (px) height or width, so they rely solely on the responsiveness of their content.
+
+    By default, the width and height of an element are calculated like this:
+
+    width + left padding + right padding + left border + right border + left margin + right margin = actual width of an element
+    height + top padding + bottom padding + top border + bottom border + top margin + bottom margin = actual height of an element
+
+    This means: When you set the width/height of an element, the element often appear bigger than you have set (because the element's border and padding are added to the element's specified width/height).
+
+        div {
+            width: 320px;
+            padding: 10px;
+            border: 5px solid green;
+            margin: 0; 
+        }
+
+        Here is the calculation:
+        320px (width)
+        + 20px (left + right padding)
+        + 10px (left + right border)
+        + 0px (left + right margin)
+        = 350px
+
+    The code snippet above illustrates the total width and height formula in more detail.
+
+    The box-sizing property allows us to include the padding and border in an element's total width and height.
+
+    {box-sizing: content-box;}
+        Default. The width and height properties (and min/max properties) includes only the content. Border, padding and margin are NOT included.
+
+    {box-sizing: border-box;}
+        The width and height properties (and min/max properties) includes content, padding and border. Margin is NOT included.
+
+    The box-sizing: border-box property ensures that all elements are sized in this more intuitive way. Many browsers already use box-sizing: border-box; for many form elements (but not all - which is why inputs and text areas look different at width 100%;).
+
+        * {
+            box-sizing: border-box;
+        }
+    
+    The code snippet above shows the border-bpx property to all elements with the universal selector. Doing this is safe and wise.
+
+    It is highly recommended that container blocks (e.g.: div, section, footer, etc.) have no fixed (px) height or width, so they rely solely on the responsiveness of their content.
+
+Background Properties:
+
+    {background-color: green;}
+	Specifies background color.
+
+    {background-image: url("background.png");}
+	Specifies a background image.
+
+    {background-repeat: repeat-x;}
+	Repeats background on the X axis (horizontal).
+    {background-repeat: repeat-y;}
+	Repeats background on the Y axis (vertical).
+
+    {background-attachment: fixed;}
+	Makes the background image fixed in the same place the same even if you scroll.
+    {background-attachment: scroll;}
+	Makes scrolling past the background image possible.
+
+    {background-origin: content-box;}
+	The background image starts from the upper left corner of the content box.
+    {background-origin: padding-box;}
+        Default. The background image starts from the upper left corner of the padding box.
+    {background-origin: border-box;}
+        The background image starts from the upper left corner of the border box.
+
+    {background-position: right bottom;}
+    {background-position: left top;}
+    {background-position: center center;}
+    {background-position: 50% 50%;}
+    {background-position: 500px 500px;}
+        Specifies the horizontal and vertical position of the background respectively.
+        Specifies the background image's position relative to its origin position.
+        Negative values are allowed.
+
+    {background-size: 300px 100px;}
+        Displays the background image in a fixed size, starting from its origin position.
+        No negative values are allowed.
+    {background-size: auto;}
+        Displays the background image in its original size.
+    {background-size: contain;}
+        Resizes the background image to make sure the image is fully visible within its container while mantaining its proportions.
+    {background-size: cover;}
+        Resizes the background image to cover the entire container while mantaining its proportions, even if it has to resize the image or clip a bit off of the edges.
+        
+    {background: url("background.png") repeat-x fixed padding-box right top/300px 100px green;}
+        Shorthand property for setting all the background properties into a single property (except background-clip).
+        The properties can be set in almost any order.
+        The background position must be declared before the background size and a slash must be in between the two (/).
+        It doesn't matter if one of the values above is missing.
+
+    {background-clip: border-box;}
+        Default. The background extends to the outside edge of the border box.
+    {background-clip: padding-box;}
+        The background extends to the outside edge of the padding box.
+    {background-clip: content-box;}
+        The background extends to the edge of the content box.
+	
+Ways to display gradients:
+
+    Gradients let you display smooth transitions between two or more specified colors.
+    Gradients are displayed as backgrounds in css.
+    To create gradient you must define at least two color stops.
+    Color stops are the colors you want to display smooth transitions among.
+
+    [Linear gradients] are defined by their direction.
+        The default linear direction is from top [to bottom].
+        Flow direction can be expressed in keywords and in degrees.
+
+        When using a percentage next to a color value, 50% for example, it means that the gradient with the next color stop will start at 50% of the available space, and go on until the start of the next color stop, or the end of the available space.
+        No negative values are allowed for percentages (%).
+        Negative values are allowed for degrees (deg).
+
+        {background: linear-gradient(green 50%, lime 75%, yellow);}
+            Color stop at 50%, color stop at 75%, color stop at 100%.
+            In this example, there is solid green for 50% of the space, then a green-lime gradient from 50% to 75% of the space, and finally a lime-yellow gradient in the remaining 75% to 100% of the space left.
+
+        {background: linear-gradient(green, lime, yellow);}
+        {background: linear-gradient(to bottom, green, lime, yellow);}
+        {background: linear-gradient(180deg, green, lime, yellow);}
+            Default. From top [to bottom].
+
+        {background: linear-gradient(to top, green, lime, yellow);}
+        {background: linear-gradient(0deg, green, lime, yellow);}
+            From bottom [to top].
+
+        {background: linear-gradient(to right, green, lime, yellow);}
+        {background: linear-gradient(90deg, green, lime, yellow);}
+            From left [to right].
+
+        {background: linear-gradient(to left, green, lime, yellow);}
+        {background: linear-gradient(-90deg, green, lime, yellow);}
+            From right [to left].
+
+        {background: linear-gradient(to top left, green, lime, yellow);}
+        {background: linear-gradient(-45deg, green, lime, yellow);}
+        {background: linear-gradient(to top right, green, lime, yellow);}
+        {background: linear-gradient(45deg, green, lime, yellow);}
+        {background: linear-gradient(to bottom right, green, lime, yellow);}
+        {background: linear-gradient(135deg, green, lime, yellow);}
+        {background: linear-gradient(to bottom left, green, lime, yellow);}
+        {background: linear-gradient(-135deg, green, lime, yellow);}
+            Diagonal gradients.
+            The shape of diagonal gradients is altered by the shape of their container as they stretch out to fit it accurately.
+
+    [Radial gradients] are defined by their center.
+        No negative values are allowed.
+
+        {background: radial-gradient(green, lime, yellow);}
+            The shape of radial gradients is altered by the shape of their container as they stretch out to fit it accurately.
+
+    To make good looking custom CSS gradients without thinking too much about it visit:
+    http://www.colorzilla.com/gradient-editor/
+
+List Properties:
+
+    {list-style-type: circle;}
+        Circle bulletpoint.
+    {list-style-type: square;}
+        Square bulletpoint.
+
+    {list-style-type: upper-roman;}
+        Numbered in uppercase roman numerals.
+    {list-style-type: lower-alpha;}
+        Numbered in lowercase alpha numerals (alphabet).
+
+    {list-style-type: none;}
+        Removes the list-item markers.
+
+    {list-style-image: url("li-marker");}
+        Specifies an image as the list item marker.
+
+    {list-style-position: outside;}
+        Specifies the list-item markers bullet points to be inside the list item.
+    {list-style-position: inside;}
+        Specifies the list-item markers bullet points to be outside the list item.
+
+Table Properties:
+
+    Tables appear to have double borders.
+    This is because both the table and the th and td elements have separate borders from the table itself.
+
+    {border-collapse: collapse;}
+        Collapses borders into a single border when possible (border-spacing and empty-cells properties have no effect).
+    {border-collapse: separate;}
+        Default. Borders are separated and each cell will display its own borders.
+
+    {border-spacing: 0px;}
+        Specifies all border spacing.
+	{border-spacing: 0px 0px;}
+        Specifies horizontal and vertical border spacing respectively.
+        The default border spacing is 2px.
+        This property only works when border-collapse is set to separate.
+        Specifies the distance between the borders of adjacent cells.
+        No negative values are allowed.
+
+    {empty-cells: show;}
+    {empty-cells: hide;}
+        Specifies whether to display borders and background on empty cells in a table or not.
+
+    {caption-side: top;}
+        Default. Specifies the placement of the table caption as being on the top of the table.
+    {caption-side: bottom;}
+        Specifies the placement of the table caption as being on the bottom of the table.
+
+Font and Text Properties:
+
+    [Font families] are defined as a particular set of [fonts] with varying weights (boldness) and heights (stretch).
+    [Fonts] are defined as a particular set of characters with the same weight (boldness) and height (stretch).
+    Only one font can be applied to the same character at once.
+
+    {color: green;}
+        Specifies the color of text.
+
+    {font-size: 16px;}
+    {font-size: 100%;}
+    {font-size: 1em;}
+        Specifies the font size of a text.
+        No negative values are allowed.
+
+        It is recommended to NOT use px to set font sizes as pixels aren't a very responsive measurment.
+        It is highly recommended to use [rem] to set font sizes as it is very responsive.
+
+        The value of % is relative to the current selected element's font size, and if there is none, the closest ancestor element's font size (e.g.: its parent).
+        If no font size is specified in :root, the default size will be set to 16px.
+        If the font size is set to 100% in root, the size will also be set to 16px.
+
+    It is highly recommended to set the root element's font size to 100% value before setting any other font sizes anywhere in the document.
+
+        16px = 100% = 1rem
+
+    {font-family: "Font Name", "Fallback Font Name", Font Type;}
+        {font-family: "Cambria", "Hoefler Text", "Liberation Serif", "Times New Roman", serif;}
+        {font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", "Helvetica", "Arial", sans-serif;}
+        {font-family: "Consolas", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "Monaco", "Courier New", monospace;}
+        Specifies the font family for text.
+        Font families (font names) must be expressed in quotes, and font types (serif, sans-serif, monospace) without quotes.
+        If the first specified font isn't available, the browser will try to find the next specified font, and so on.
+        If no specified fonts are available, the browser will look for the font type declaration and look for any font of that type.
+
+    {font-weight: 100;}
+        Hairline weight.
+    {font-weight: 200}
+        Ultra-light weight.
+    {font-weight: 300;}
+        Light weight.
+    {font-weight: normal;}
+    {font-weight: 400;}
+        Normal.
+    {font-weight: 500;}
+        Medium.
+    {font-weight: 600;}
+        Semi-Bold.
+    {font-weight: bold;}
+    {font-weight: 700;}
+        Bold.
+    {font-weight: 800;}
+        Ultra-Bold.
+    {font-weight: 900;}
+        Black.
+        Specifies the weight of a font.
+        Specifying unavailable weights will display the logically closest weight.
+
+    {font-stretch: condensed;}
+    {font-stretch: normal;}
+    {font-stretch: expanded;}
+        Specifies how the font should be stretched.
+
+    {font-style: normal;}
+    {font-style: italic;}
+        Specifies whether the font is italic or normal.
+
+    {font-variant:normal;}
+    {font-variant: small-caps;}
+        Specifies whether a text should be displayed in a small-caps font or not.
+
+    Using the fonts shorthand property is NOT recommended because the syntax is complicated and it fails to display very often.
+    That's why it isn't shown here.
+
+    {text-decoration: none;}
+        Removes any decorations (lines) from the text.
+    {text-decoration: overline;}
+        Adds an overline to the text.
+    {text-decoration: line-through;}
+        Adds an line-through to the text.
+    {text-decoration: underline;}
+        Adds an underline to the text.
+
+    {word-spacing: 5px;}
+        Increases or decreases the space between words in a text.
+        Negative values are allowed.
+
+    {letter-spacing: 5px;}
+        Increases or decreases the space between characters in a text.
+        Negative values are allowed.
+
+    {white-space: normal;}
+        Multiple space characters (spacebars, " ") are collapsed into one.
+        New line characters (line breaks, <br/>) are collapsed and removed.
+        Text wrapping is allowed.
+    {white-space: pre;}
+        Pre stands for preserve, for this value preserves white space.
+        Multiple space characters are allowed.
+        New line characters are allowed.
+        Text wrapping is NOT allowed.
+    {white-space: pre-wrap;}
+        Multiple space characters are allowed.
+        New line characters are allowed.
+        Text wrapping is allowed.
+    {white-space: pre-line;}
+        Multiple space characters are NOT allowed.
+        New line characters are allowed.
+        Text wrapping is allowed.
+    {white-space: nowrap;}
+        Multiple space characters are NOT allowed.
+        New line characters are NOT allowed.
+        Text wrapping is NOT allowed.
+        
+        It is recommended to use the pre-wrap feature as it is the value that permits the use of the most features.
+
+        In simple terms, [wrapping] means when an element adapts to the boundaries of its container and other elements, and fits in any available space without overflowing or overlapping.
+
+    {text-overflow: clip;}
+        Clips overflowing text.
+    {text-overflow: ellipsis;}
+        Display an ellipsis (...) to represent clipped text.
+
+    {line-height: 20px;}
+        Specifies the line height to 20px.
+    {line-height: 80%;}
+        Multiplies the current selected element's font size by 0.8 to determine the line height.
+    {line-height: 200%;}
+        Multiplies the current selected element's font size by 2 to determine the line height.
+    {line-height: 1.6;}
+        Multiplies the current selected element's font size by 1.6 to determine the line height.
+        No negative values are allowed.
+
+    {word-break: keep-all;}
+        Doesn't break words whatsoever, breaks in spaces between words.
+    {word-break: break-all;}
+        Breaks words between any two letters.
+
+    {word-wrap: normal;}
+    {word-wrap: break-word;}
+        Breaks during long words and in spaces between words, break rules apply normally to normal length words.
+
+    {hyphens: none;}
+    {hyphens: auto;}
+        Inserts hyphens where broken words continue.   
+
+    {text-align: center;}
+        Centers the text within its containint box.
+    {text-align: left;}
+        Aligns the text to the left of its containing box.
+    {text-align: right;}
+        Aligns the text to the right of its containing box.
+    {text-align: justify;}
+        Stretches each line of text so they have equal width.
+
+    {text-indent: 30px;}
+        Specifies the indentation of the first line.
+        Specifies the indentation of the first line.
+        Negative values are allowed.
+
+    {hanging-punctuation: first;}
+        Makes the quotation marks go outside content boxes, and thus harmonizing the text with the all of the unquoted paragraphs.
+
+Font-Face At-Rule:
+
+    The font-face at-rule is a non-conditional nested at-rule.
+    This at-rule should be situated at the top level of your code, before any styles.
+
+    It is recommended to use the font-face at-rule only when necessary.
+
+    The font-face at-rule loads custom fonts to your website.
+    Without it (and without other external font sources), users are limited to the fonts that are already loaded in their computers.
+    Once added to the stylesheet the at-rule instructs the browser to download the font from where it is hosted, and then display it as specified in any declaration.
+
+    You must add another font-face at-rule containing descriptions for each font weight that will be loaded to the website.
+
+    @font-face {
+        font-family: "Font Name";
+        src: url("http://fonthostingsite.com/font_name.woff2") format("woff2"),
+             url("http://fonthostingsite.com/font_name.woff") format("woff");
+        font-weight: 400;
+    }
+    Many formats are declared as fallback in case a browser doesn't support one of them.
+    WOFF means Web Open Font Format, and is the standard file for web.
+    WOFF2 is a newer, faster version, but has slightly less support as it is newer.
+
+    The browser downloaded font can be used to style any element.
+
+    body {
+        font-family: "Downloaded Font", Font type; 
+        font-weight: 400;
+    }
+
+Web Resources:
+
+    Many resources like fonts and icons can be loaded to your website by just linking them with an external URL to a hosting website that contains certain files.
+    
+    Fonts:
+
+    No downloading or installation is required. Choose a font from the font hosting website. Just add the URL provided (by the font hosting website) to a link element in the head section of your HTML page, and they will be downloaded to your browser on page load.
+
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta:400,700" rel="stylesheet"/>
+            Google Fonts setup example.
+
+    By just adding the URL to the link element, the font, and all the chosen weights and styles are ready to use.
+
+    Icons:
+
+    Web icons are essentially fonts.
+    Fonts have a typographic feature called ligatures, that allow the display of an icon glyph by using a keyword (e.g.: face).
+    No downloading or installation is required. Choose an icon from the icon hosting website. Just add the URL provided (by any icon hosting website) to a link element in the head section of your HTML page, and they will be downloaded to your browser on page load.
+
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+            Google Icons setup example.
+
+    To display the icons, you might need to create another HTML element (preferably inline, like span), and write certain keywords (specified by the icon font page) between the element tags.
+    You can also edit the icon properties as if it were a regular text, one that doesn't use letters but icons.
+
+    A class will be automatically set to the icon font, and declaring it in the link element will NOT be necessary.
+    Usually the set class will also be declared by the hosting website when selecting an icon.
+
+        <a class="material_icons" id="face">face</a>
+
+        .material_icons {
+            font-size: 20px;
+        }
+
+        #face {
+            color: green;
+        }
+
+Import At-Rule:
+
+    The import at-rule is a non-conditional at-rule.
+    This at-rule should be situated at the top level of your code, before any styles.
+
+    The import at-rule can be used to link other stylesheets to your own via URL.
+    No matter how many stylesheets are linked to the first one (via <link> or @import ;), the charset (@charset ;) at-rule should only be used once, and in only one stylesheet.
+        
+    The import at-rule can also be used in the same way as the link element in HTML, to link any kind of file to your website.
+    Though it is recommended to use the import at-rule exclusively for stylesheets.
+        
+    @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta:400,700;);
+            Google Fonts setup example.   
+        
+    By just adding the URL to the import at-rule, the font, and all the chosen weights and styles are ready to use.
+        
+
+Image and Video (Objects) Properties:
+        
+    If an object has a container, and the container has no fixed (px) height or width, the container will resize to make the object fit perfectly within.
+
+    {object-fit: fill;}
+        Default. Resizes the object to fit its entire container, even if it has to stretch or squish it.
+    {object-fit: contain;}
+		Resizes the object to make sure the image is fully visible within its container while mantaining its proportions.
+    {object-fit: cover;}
+		Resizes the object to cover its entire container while mantaining its proportions, even if it has to resize the image or clip a bit off of the edges.
+
+    {object-position: right bottom;}
+    {object-position: left top;}
+    {object-position: center center;}
+    {object-position: 0px 100px;}
+    {object-position: 50% 50%;}
+        Specifies the horizontal and vertical position respectively.
+        Specifies the background image's position relative to its origin position.
+        The object origin position is the upper left corner of the padding edge by default.
+        Negative values are allowed.
+
+    {filter: drop-shadow(0px 10px 5px green);}
+        Specifes the vertical shadow position, horizontal shadow position, shadow blur radius and shadow color. 
+    {filter: blur(5px);}
+        Specifies the quantity of blur.
+    {filter: opacity(100%);}
+        Specifies the opacity.
+        0% invisible, 100% fully visible.
+    {filter: contrast(100%);}
+        Specifies the contrast.
+        0% max contrast, 100% normal.
+    {filter: hue-rotate(90deg);}
+        Specifies the hue change.
+        max 360deg.
+    {filter: saturate(100%);}
+        Specifies the saturation.
+        0% no saturation, 100% normal, 100%+ max saturation.
+    {filter: brightness(100%);}
+        Specifies the brightness.
+        0% black, 100% normal, 200% white.
+    {filter: invert(0%);}
+        Specifies the color inversion.
+        0% normal, 100% color inverted.
+    {filter: grayscale(0%);}
+        Specifies the grayscale quantity.
+        0% normal, 100% max grayscale.
+    {filter: sepia(0%);}
+        Specifies the sepia quantity.
+        0% normal, 100% max sepia.
+    {filter: url(file.xml);}
+        Specifies a custom xml type filter.
+
+        Filters apply to both images and videos.
+        More than one filter can be added to the same object.
+        No negative values are allowed.
+
+Position Properties:
+
+    A non-static positioned element is one whose position is anything except static.
+
+    {position: static;}
+        Default. Positions an element as it appears in the normal document flow.
+        Its position and interaction with other elements within the site depends solely on its display property value.
+        Static elements go after other static elements and ignore non-static positioned elements.
+        An element with static position is NOT affected by the top, right, bottom and left properties.
+
+    {top: 50px;}
+    {top: -50%}
+    {right: -50px;}
+    {right: 50%;}
+    {bottom: -50px;}
+    {bottom: 50%;}
+    {left: 50px;}
+    {left: -50%;}
+        Setting the top, right, bottom, and left properties on a non-static positioned element will cause it to be displaced from its normal position, opposite to the specified direction in a fixed distance.
+        Setting any of these properties to 0 will place the object in the maximum specified direction that is possible within its container (for absolute and fixed positioned elements, the margins are also kept within the container's content box; as they aren't part of the normal document flow and their top left margin counts as their origin point) or relative to its original position (for relative positioned elements; also, there is no displacement at all in this case).
+        Negative values are allowed.
+
+    {position: relative;}
+        Positions an element as it appears in the normal document flow, with the difference that they can have the top, right, bottom or left properties applied, in this case, they can be moved anywhere within and outside their container (taking their original position as point of reference) and will be able to overlap elements.
+        Other content will NOT be adjusted to fit into the gap left by the displaced element's original placement.
+        No matter how much the object is displaced by the top, right, bottom or left properties, the gap will keep its original size and won't move.
+        Relative positioned elements ignore any object when they have the top, right, bottom or left properties applied and overlap each other depending on display order; they also overlap any static element regardless of their display order.
+
+    {position: absolute;}
+        Positions an element in relation to its container.
+        If an absolute positioned element has no non-static positioned ancestors, it uses the body element as reference point, and moves along with page scrolling.
+        If an absolute positioned element has a non-static positioned ancestor, it uses the it as reference point.
+        Absolute positioned elements basically get out of document flow and will tend to go in undesired places if left without the top, right, bottom or left properties applied.
+
+        If the top, right, bottom or left properties aren't applied to an absolute positioned element, all their margins and content will go inside the content box of their container (whereas static and relative objects only have their content and horizontal margins inside, because the vertical margins overflow).
+        Absolute positioned elements will always originate (including their margins) after the margins of any static positioned sibling elements that are directly before them (if there are no margins, after the content) (if the margins of the static positioned element are big enough, the absolute positioned elements may display outside of their container, but not out of the user's visible page area).
+
+        The margin collapse that happens when two vertical margins meet will NOT occur between static and non-static elements.
+        Static or relative (without the top, right, bottom or left properties applied) positioned elements placed after absolute positioned elements will be placed after the previous static or relative the top, right, bottom or left properties applied) positioned element, completely ignoring an absolute positioned element that happens to be in-between.
+        Absolute positioned elements ignore any object when they have the top, right, bottom or left properties applied and overlap each other depending on display order; they also overlap any static element regardless of their display order.
+
+    {position: fixed;}
+        Positions an element relative to the user's visible page area, which means it always stays in the same place even with page scrolling.
+        The top, right, bottom, and left properties will affect this element.
+        A fixed positioned element doesn't take up any space, so it leaves no gap.
+        This element ignores other elements and other elements ignore it as well.
+        A fixed positioned element can have the top, right, bottom or left properties applied.
+
+    {position: sticky;}
+        Positions an element that behaves like a relative positioned element until the user's visible page area is scrolled enough that the element would be clipped and eventually dissappear from view, when this happens, the element's behavior changes to a fixed positioned element,  and moves along with page scrolling.
+        The top, right, bottom, and left properties will affect this element in the same way they affect a relative positioned element.
+
+    It is highly recommended that container blocks (e.g.: div, footer, section, etc.) have no fixed (pixels) height or width, so they rely solely on the responsiveness of their content.
+
+Overflow Property:
+
+    Specifies whether to clip content or to add scrollbars when the content of an element is too big to fit (overflows) its containing box.
+
+    {overflow: visible;}
+        Default. The overflow isn't clipped. It displays outside the container's border box.
+    {overflow: hidden;}
+        The overflow is clipped, and the rest of the content will be hidden.
+    {overflow: scroll;}
+        The overflow is clipped, but a scrollbar is added to see the rest of the content.
+        This will add a scrollbar both horizontally and vertically (even if you don't need it).
+    {overflow: auto;}
+        If overflow is clipped, a scrollbar should be added to see the rest of the content.
+
+    {overflow-x: visible;}
+    {overflow-x: hidden;}
+    {overflow-x: scroll;}
+    {overflow-x: auto;}
+    {overflow-y: visible;}
+    {overflow-y: hidden;}
+    {overflow-y: scroll;}
+    {overflow-y: auto;}
+        Specifies whether to change the overflow of content just horizontally (overflow-x) or vertically (overflow-y) (or both).
+
+Z-Index Property:
+    
+    {z-index: -2;}
+        Specifies the stack order of the element.
+        Z-index only works on non-static positioned elements.
+        Negative values are allowed.
+
+            .object-1 {
+                position: absolute;
+                z-index: 1;
+            }
+
+            .object-2 {
+                position: absolute; 
+                z-index: 0;
+            }
+
+    In the code snippet above, no matter the declaration order, object-1 will be in front of object-2 because its z-index (stack order) is higher.
+
+Float and Clear Properties:
+
+    {float: right;}
+    {float: left;}
+        Makes an element "float" (move) as far as possible to the specified direction on their current line and container.
+        Floated elements are moved from their standard position in the flow, but still are part of the normal document flow (still static positioned).
+        The gap left by the object may be filled in by any element placed after it that fits inside.
+
+        In its simplest use, the float property can be used to wrap text around images by making the image float to either side and making a gap big enough for the text placed after it to fit.
+
+    {clear: right;}
+    {clear: left;}
+    {clear: both;}
+        Negates the displacement of an element/s (displaced filling the gaps left by a floated element) (elements placed after a floated element) by starting a new line on the page and placing the previously displaced element/s there, while leaving the floated element untouched in its own line.
+        Essentially, it doesnt let elements float on a side (or both sides) of an element that would fill a floated element's gap.
+
+        When clearing floated elements, you should match the clear to the float.
+        If an element is floated to the left, then you should clear any floated elements to the left of your displaced element.
+        This will start a new line with your displaced element in it, and leave the floated element (now above) untouched.
+
+        The clearfix hack:
+            If an element is within a container with no fixed (px) height or width, happens to be taller (more height) than it, and is floated, it will overflow outside of its container and make the container collapse to the size it would have if the floated element dissappeared. Any content placed after the container will fill the gap left by the (effectively) floated element, overlapping the (now collapsed) container.
+            The simple solution for this common problem is applying and setting the overflow property to auto, to the containing element.
+    
+                .container-fix {
+                    overflow: auto;
+                }
+
+            The clearfix hack works well  for this problem as long as you are able to keep control of your margins and padding (else you might see scrollbars).   
+            The new clearfix hack, however, is safer to use.
+
+                .container-fix-new::after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+
+            The code snippet above shows the new clearfix hack in use, it is also the must used code in webpages that use float.
+            The new clearfix hack works by adding an after pseudo-element to the container.
+            The after pseudoelement selects the space directly after the selected element (in this case the container).
+            The logic behind putting just a blank string in the content property (required property for the before and after pseudo-elements) is that it will take up space, but at the same time none, and will be basically invisible.
+            The logic behind the table display is that it starts on a new line and only takes up as much line width as necessary, which is gasically nothing in this case.
+            The logic behind the clear property is that it clears any floated elements for both sides of the container's lower side, essentially restoring the container to its original height (enough to contain the object).
+
+        It is worth noting that the use of floated elements for layout is getting more and more discouraged with the use of better alternatives like the inline-block display, flex display (will be subsequently explained) and grid display (will be subsequently explained).
+
+Transform Property:
+
+    Visually manipulates an element by scaling, skewing, rotating or translating it.
+
+    {transform: scale(10);}
+    {transform: scaleX(2);}
+    {transform: scaleY(0.5);}
+    {transform: scale(2, 0.5);}
+        Affects the size of the element.
+        It also applies to the font-size, padding, height, and width of an element.
+        Scales the horizontal and vertical axes respectively.
+        No negative values are allowed.
+
+    {transform: skewX(5deg);}
+    {transform: skewY(90deg);}
+        Tilts an element horizontally or vertically (E.g.: turning a square into a rhombus).
+        Negative values are allowed.
+
+    {transform: translateX(50px);}
+    {transform: translateY(-20px);}
+    {transform: translate(50px, 20px;)}
+        Moves an element sideways or up and down.
+        Moves an element along the horizontal and vertical axes respectively.
+        Negative values are allowed.
+
+    {transform: rotate(90deg)}
+        Rotates the element clockwise.
+        Negative values are allowed.
+
+    {transform: rotateX(30deg);}
+    {transform: rotateY(50deg);}
+        Rotates the element along the horizontal or vertical axis.
+        Negative values are allowed.
+
+Transition Property:
+
+    Changes an element's values over a specified duration, animating the property changes, rather than having them occur immediately.
+    To create a transition effect, you must specify the property you want to add an effect to and the duration of the effect.
+    The transition effect will start when the specified property changes value.
+    You can easily trigger the transition with the :hover, :target, :active and :focus pseudo-classes.
+    The starting image of the transition is the one without the triggering pseudo-class, and the ending image is the one with the trigger pseudo-class.
+
+    {transition-duration: 0.5s;}
+        Specifies how many seconds or milliseconds a transition effect takes to complete.
+        No negative values are allowed.
+
+    {transition-delay: 5s;}
+        Specifies a delay (in seconds) for the transition effect.
+        No negative values are allowed.
+
+    {transition-timing-function: ease;}
+        Default. Specifies a transition effect with a slow start, then fast, then end slowly.
+    {transition-timing-function: ease-in;}
+        Specifies a transition effect with a slow start.
+    {transition-timing-function: ease-out;}
+        Specifies a transition effect with a slow end.
+    {transition-timing-function: ease-in-out;}
+        Specifies a transition effect with a slow start and end.
+    {transition-timing-function: linear;}
+        Specifies a transition effect with the same speed from start to end.
+
+    {transition-property: property;}
+        Specifies the name of the CSS property the transition effect is for.
+        If no property is declared, all the properties in the trigger element will be involved in the transition.
+
+    {transition: 0.5s ease 5s property;}
+        Shorthand property for setting all the transition properties into a single property.
+        The transition duration must be declared before the transition delay.
+        The properties can be set almost in any order.
+        It doesn't matter if one of the values above is missing.
+        No negative values are allowed.
+
+        div {
+            width: 100px;
+        }
+
+        div:hover {
+            width: 300px;
+            transition: width 2s ease-in 1s;
+        }
+
+Animation Property and Keyframes At-Rule:
+    
+    Animates many properties such as color, background-color, height, or width without the use of javascript or flash.
+
+    The keyframes at-rule is a non-conditional nested at-rule.
+    This at-rule can be situated anywhere within your code.
+
+    Each animation needs to be defined with the keyframes at-rule which is then called to action with an animation property nested within an element (which will be animated).
+    Each keyframes at-rule specifies what should happen at specific moments during the animation, by allowing us to mark the start and stop (and in-between) marks for what is being animated.
+    0% is the beginning of the animation and 100% is the end of the animation.
+    These keyframes can then be controlled by the animation properties to give more control over how those keyframes should be manipulated.
+
+    If a keyframes animation has the same starting and ending properties, it's useful to separate with a comma the 0% and 100% values inside (0%, 100%).
+
+        @keyframes name {
+            
+            0%, 100% {
+            background-color: coral;
+          }
+            
+            50% {
+                background-color: dodgerblue;
+          }
+            
+            75% {
+                background-color: darkorchid;
+            }
+        }
+
+            element:hover {
+              animation-name: name;
+              animation-duration: 0.5s;
+              animation-delay: 5s;
+              animation-iteration-count: infinite;
+              animation-timing-function: ease-in;
+        }
+
+    The code snippet above shows how the keyframes animation works.
+    You must first make a keyframes at-rule and name it.
+    Then specify the different marks and states of the animation.
+    When the keyframes at-rules is done, choose the element you want to apply the animation to and specify the animation display properties.
+
+    {animation-name: name;}
+        Specifies the name of the keyframes at-rule to manipulate.
+
+    {animation-duration: 0.5s;}
+        Specifies how many seconds or milliseconds a transition effect takes to complete one cycle.
+        No negative values are allowed.
+
+    {animation-delay: 5s;}
+        Specifies a delay (in seconds) for the transition effect.
+        No negative values are allowed.
+
+    {animation-timing-function: ease;}
+        Default. Specifies a transition effect with a slow start, then fast, then end slowly.
+    {animation-timing-function: ease-in;}
+        Specifies a transition effect with a slow start.
+    {animation-timing-function: ease-out;}
+        Specifies a transition effect with a slow end.
+    {animation-timing-function: ease-in-out;}
+        Specifies a transition effect with a slow start and end.
+    {animation-timing-function: linear;}
+        Specifies a transition effect with the same speed from start to end.
+
+    {animation-direction: normal;}
+    {animation-direction: reverse;}
+    {animation-direction: alternate;}
+        Specifies whether an animation should play forwards, backwards or in alternate directions.
+
+    {animation-iteration-count: 5;}
+    {animation-iteration-count: infinite;}
+        Specifies the number of times the animation should be performed.
+        No negative values are allowed.
+
+    {animation-fill-mode: forwards;}
+        Default. The element gets the style values from the last keyframe after the animation ends.
+    {animation-fill-mode: backwards;}
+        The element gets the style values from the first keyframe before the animation starts.
+    {animation-fill-mode: both;}
+        The element gets the style values from the first and last keyframes before and after the animation respectively.
+
+        Specifies which styles are applied before and after the animation plays, or during the animation delay period.
+
+    {animation-play-state: running;}
+        Default. The animation is running.
+    {animation-play-state: paused;}
+        The animation is paused.
+    
+    {animation: name 0.5 5s ease-in infinite}
+        Shorthand property for setting all the transition properties into a single property.
+        No negative values are allowed.
+
+Favicon:
+
+    Favicons are the small images displayed on browser tabs.
+    To set a favicon you have to do so in HTML in a link element like this:
+        
+        <link href="http://www.imagehostingsite.com/image.ico"rel="shortcut icon"/>
+
+Cursor:
+
+    Specifies the mouse cursor to be displayed when hovering over an element.
+
+    {cursor: auto;}
+        Default. The browser defines the best cursor for every situation.
+    {cursor: default;}
+        The default cursor.
+    {cursor: text;}
+        The cursor indicates text that may be selected.
+    {cursor: pointer;}
+        The cursor is a pointer and indicates a link
+    {cursor: wait;}
+        The cursor indicates that the program is busy.
+    {cursor: help;}
+        The cursor indicates that help is available.
+    {cursor: crosshair;}
+        The cursor displays as a crosshair.
+    {cursor: copy;}
+        The cursor indicates something is to be copied.
+    {cursor: no-drop;}
+        The cursor indicates that the dragged item cannot be dropped here.
+    {cursor: zoom-in;}
+        The cursor indicates that something can be zoomed in.
+    {cursor: zoom-out;}
+        The cursor indicates that something can be zoomed out.
+    {cursor: none;}
+        No cursor is displayed for the element.
+
+    {cursor: n-resize;} {cursor:s-resize;}
+        The cursor indicates that something is to be moved vertically.
+    {cursor: w-resize;} {cursor:e-resize;}
+        The cursor indicates that something is to be moved horizontally.
+    {cursor: move;}
+        The cursor indicates something is to be moved.
+
+    {cursor: cell;}
+        The cursor indicates that a cell (or set of cells) may be selected.
+    {cursor: row-resize;}
+        The cursor indicates that the row can be resized vertically.
+    {cursor: col-resize;}
+        The cursor indicates that the column can be resized horizontally.
+
+Viewport:
+
+    It is the user's visible area of a page.
+    
+    You can take control of varying viewport sizes (computers, tablets, phones) by using the meta tag in HTML.
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1,0"/>
+
+    The meta viewport element gives the browser instructions on how to control the dimensions and scaling of the website.
+    width=device-width specifies the width of the page to follow the screen-width of the device (which varies depending on the device)
+    initial-scale=1.0 Specifies the initial zoom level when the page is first loaded by the browser.
+    This should be added to the meta tag in every HTML page.
+    
+    Do NOT use large fixed width (px) elements.
+    Do NOT let the content rely on a fixed (px) viewport width to display well.
+    Use the media at-rule (will be subsequently explained) to apply different styling for small and large screens.
+
+Fallback Declarations:
+
+    Browsers apply CSS styles in the order the code is read by the browser, with a few priority exceptions.
+    This means that the style that is read last will be the one applied in the end, overriding values that are applied to the properties.
+    When a property value is unsupported by a browser, it will completely drop the property because the value isn't understood.
+    will be inherited from the surrounding context. To prevent this, you should always include fallback properties.
+    A fallback property should always go before the new property to ensure unsupporting browsers see and use it correctly, and that newer browsers continue on to use the newer property value anyways.
+    Although CSS makes possible providing fallbacks for many property values just by writing multiple declarations, sometimes more control over what is applied is needed.
+
+Supports At-Rule:
+
+    The supports at-rule is a conditional at-rule.
+    This at-rule can be situated anywhere within your code.
+
+    The supports at-rule lets you make conditional queries that test a browser's support for one or more specific properties and/or property values.
+    These conditional queries are called feature queries.
+    When a feature query is defined as [true], the at-rule's contents will be applied to the document.
+    When a feature query is defined as [false], the browser will ignore the rest of the at-rule and continue reading the rest of the style sheet.
+
+    Feature queries consist of logical connectors and at least one property/value pair declaration in parentheses.
+
+        @supports (display: grid) {
+            div {
+                display: grid;
+            }
+        }
+
+    The supports at-rule code snippet above basically asks if the CSS grid display feature is supported by the browser; and if it is, it will apply the property to the div element.
+
+        @supports (display: grid) and (display: flex) {
+            display: grid;
+        }
+
+        @supports not (display: grid) {
+            display: grid;
+        }
+
+        @supports (display: grid) or (display: flex) {
+            display: grid;
+        }
+
+        @supports (display: grid) and not (display: flex) {
+            display: grid;
+        }
+
+    Examples of correct supports at-rule syntaxis in the code snippets above.
+    Any at-rule logical connector can be applied to the supports at-rule syntaxis.
+
+Media At-Rule:
+
+    The media at-rule is a conditional at-rule.
+    This at-rule can be situated anywhere within your code.
+
+    It is highly recommended to design first for mobile devices and then add media queries for desktop CSS declarations as this will greatly improve the page performance on load.
+
+    The media at-rule lets you make conditional queries that test specific characteristics for a specified media type.
+    These conditional queries are called media queries.
+    When a media query is defined as [true], the at-rule's contents will be applied to the document.
+    When a media query is defined as [false], the browser will ignore the rest of the at-rule and continue reading the rest of the style sheet.
+
+        Media types (useful ones):
+
+            all
+                Used for all media type devices.
+            print
+                Used for printers.
+            tv
+                Used for televisions.
+            screen
+                Used for computer screens, tablets, smart-phones etc.
+
+        Media characteristics (useful ones):
+        
+            Negative values are not allowed.
+
+            (min-height: 500px)
+                    Height of the device or more.
+            (max-height: 2000px)
+                    Height of the device or less.
+            (min-width: 500px)
+                    Width of the device or more.
+            (max-width: 2000px)
+                    Width of the device or less.
+
+                    No negative values are allowed.
+
+            (min-device-pixel-ratio: 4)
+                    Pixel ratio of the device or more.
+            (max-device-pixel-ratio: 3)
+                    Pixel ratio of the device or less.
+
+                    No negative values are allowed.
+
+            (orientation: portrait)
+            (orientation: landscape)
+                    Device orientation.
+
+            (pointer: coarse)
+                    Devices with coarse inputs, like touch screens.
+            (pointer: fine)
+                    Devices with fine inputs, like mouses and stylus screens.
+
+            (hover: none)
+                    Devices without inputs with hover function.
+            (hover: hover) Mouse
+                    Devices without inputs with hover function.
+
+            (monochrome)
+                    Devices that display in black and white only.
+            (color)
+                    Devices that display in color.
+
+    For the media at-rule, the [or] logical connector is replaced with a comma.
+
+    Media queries consist of a media type, logical connectors and at least one specific characteristics declaration in parentheses.
+
+        @media screen and (max-width: 2000px) {
+            article {
+                padding: 1px 5px;
+            }
+        }
+
+    The media at-rule code snippet above basically asks if the device is a screen, and if the screen size is 2000 pixels or less; and if the answer is yes to both, it will apply the padding property to the div element.
+
+        img {
+          width: 100%;
+        }
+
+        @media all and (min-width: 900px) {
+            img {
+              width: 30%;
+            }
+        }
+
+    The media at-rule code snippet above basically asks if the screen size width is 900 pixels or more; and if the answer is yes, it will apply the width property to the img element and it will go from 100% of its container width to 30% of its container width.
+    This happens because the media at-rule is written after the width is set, so it ovverrides the width in case its query is [true].
+
+            
+        @media not screen and (hover: hover), print and (color) {
+                img {
+                width: 30%;
+            }
+        }
+
+    The media at-rule above basically asks if the device is anything except a screen and if the input has a hover; or if the device is a color printer; and if the answer is yes to any, it will apply the width property to the img element.
+
+    Examples of correct media at-rule syntaxis in the code snippets above.
+        
+    Recommended min-width (very recommended characteristic for queries) ranges that adapt to a wide range of devices:
+        
+        (min-width: 320px)
+            Targets mobile devices in portrait mode.
+        (min-width: 480px)
+            Targets mobile devices in landscape mode.
+        (min-width: 600px)
+            Targets tablets in portrait mode.
+        (min-width: 768px)
+            Targets tablets in landscape mode.
+        (min-width: 1024px)
+            Targets the desktop view.
+        
+    Media queries can also be set in an HTML document with the media attribute.
+
+        <link rel="stylesheet" media="screen and (color)" href="Example.css"/>
+        For color screens.
+    
+    You can also have different stylesheets for different media, like this:
+
+        <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css"/>
+        For screens with a width of 900px or more.
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css"/>
+        For screens with a width of 600px or less.
+
+Flex Display:
+        
+    The Flexible Box Layout (Flexbox) module aims at providing a more efficient way to lay out, align and distribute space among items in a container, even when their size is unknown and/or dynamic (thus the word "flex"). The main idea behind the flex layout is to give the container the ability to alter its items' width and height (and order) to best fill the available space (mostly to accommodate to all kinds of display devices and screen sizes). A flex container expands items to fill available free space, or shrinks them to prevent overflow. Most importantly, the flexbox layout is not based on directions as opposed to the regular layouts (block, which is vertically based, and inline, which is horizontally based). While those work well for pages, they lack flexibility to support large or complex applications (especially when it comes to orientation changing, resizing, stretching, shrinking, etc.).
+        
+    Since flexbox is a whole module and not a single property, it involves a lot of things including its whole set of properties. Some of them are meant to be set on the container (parent element, called [flex container]) whereas the others are meant to be set on the children (called [flex items]).
+        
+    Think of the flex layout as a box with two perpendicular axes crossing the box sides perpendicularly. 
+    By default, the [main axis] would be the horizontal axis, and the [cross axis] would be vertical axis.
+    By default, the left side of the box would be the [main start], the right side would be the [main end], the top side would be the [cross start], and the bottom side of the box would be the [cross end].
+    The flex direction property basically rotates or reflects the axes.
+    Items will be laid out following either the main axis (from main-start to main-end) or the cross axis (from cross-start to cross-end).
+        
+    Flexbox layout is most appropriate to the components of an application, and small-scale layouts, while the grid layout (subsequently explained) is intended for larger scale layouts.
+        
+        Main Axis:
+            The main axis of a flex container is the primary axis along which flex items are laid out. Beware, it is NOT necessarily horizontal; it depends on the flex-direction property (see below).
+
+        Main-Start/Main-End:
+            The flex items are placed within the flex container starting from main-start and going to main-end.
+
+        Main Size:
+            A flex item's width or height, whichever is in the main axis dimension, is the item's main size.
+
+       Cross Axis:
+            The axis perpendicular to the main axis is called the cross axis. Its direction depends on the main axis direction.
+
+        Cross-Start/Cross-End:
+            Flex lines are filled with items and placed into the flex container starting on the cross-start side of the flex container and going toward the cross-end side.
+
+        Cross Size:
+            A flex item's width or height, whichever is in the cross axis dimension, is the item's cross size.
+        
+    The float, clear and vertical-align properties have NO effect on a flex item.
+        
+    Flex Item (Child) Properties:
+
+        {order: 1;}
+            By default, flex items are laid out in the source order. However, the order property controls the order in which they appear in the flex container relative to other elements.
+            For example, if your put a flex item in order: 1, it will be the first item within its flex container, and if you put a flex item in order: 10, it will move again to be the tenth element in its flex container.
+            No negative values are allowed
+        
+        {align-self: stretch;}
+            Default. An individual flex item fills the whole height of the flex container.
+        {align-self: start;}
+            Aligns an individual flex item to the top of flex container.
+        {align-self: end;}
+            Aligns an individual flex item to the bottom of the flex container.
+        {align-self: center;}
+            Aligns an individual flex item to the center of the flex container.
+
+            This property aligns an individual flex item vertically.
+            This behavior can also be set for the contents of all grid items via the align-items property. 
+        
+        {flex-grow: 1;}
+            This specifies the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.
+            If all items have flex-grow set to 1, the remaining space in the flex container will be distributed equally to all children. If one of the children has a value of 2, the remaining space would take up twice as much space as the others (if possible).
+            No negative values are allowed.
+        
+    Flex Container (Parent) Properties:
+        
+        {display: flex;}
+            Defines a block flex container.
+        {display: inline-flex;}
+            Defines an inline flex container.
+        
+            Defines the element as a flex container and establishes a new flex formatting context for its contents.
+        
+                <div class="flex-container">
+                    <div class="flex-item-1"></div>
+                    <div class="flex-item-2"></div>
+                    <div class="flex-item-3"></div>
+                </div>
+        
+            The code snippet above shows an example flex container and some flex items inside.
+ 
+        {flex-direction: row;}
+            Specifies the direction of flex items inside a flex container as left to right.
+        {flex-direction: row-reverse;}
+            Specifies the direction of flex items inside a flex container as right to left.
+        {flex-direction: column;}
+            Specifies the direction of flex items inside a flex container as top to bottom.
+        {flex-direction: column-reverse;}
+            Specifies the direction of flex items inside a flex container as bottom to top.
+        
+            This property establishes the main-axis orientation, thus defining the direction (just direction, not alignment) in which flex items are placed in the flex container. Flexbox is (aside from optional wrapping) a single-direction layout concept. Think of flex items as primarily laying either in horizontal rows or vertical columns.
+            This property makes the orientation of the cross axis and main axis switch.
+        
+        {flex-wrap: nowrap;}
+            Default. All flex items will be on one line.
+            If there isn't enough room for them, they will shrink, but stay in place.
+        {flex-wrap: wrap;}
+            Flex items will wrap onto multiple lines (from top to bottom) if there is not enough room for them on one flex line.
+        {flex-wrap: wrap-reverse;}
+            Flex items will wrap onto multiple lines (from bottom to top) if there is not enough room for them on one flex line.
+        
+            By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property.
+        
+        {justify-content: flex-start;}
+            Items are packed toward the main start.
+        {justify-content: flex-end;}
+            Items are packed toward the main end.
+        {justify-content: center;}
+            Items are packed toward the center of the main axis.
+        {justify-content: space-between;}
+            Items are distributed so that the spacing between any two items (and the space to the edges) is equal.
+        {justify-content: space-around;}
+            Items are evenly distributed in the line with equal space around them. Visually the spaces are NOT equal, since all the items have equal space on both sides.
+            The first item will have one unit of space against the flex container edge, but two units of space between the next item because that next item has its own spacing that applies.
+        
+            This property aligns flex items along the main axis.
+            It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.
+            It also exerts some control over the alignment of items when they overflow the line.
+        
+        {align-items: stretch;}
+            Default. Flex items fill the whole height of the flex container.
+        {align-items: start;}
+            Aligns flex items to the the left of the flex container.
+        {align-items: end;}
+            Aligns flex items to the right of the flex container.
+        {align-items: center;}
+            Aligns flex items to the center of the flex container.
+        
+            This property aligns flex items along the cross axis.
+            It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size.
+            This behavior can also be set on individual grid items via the align-self property.
+        
+        {align-content: stretch;}
+            Default. Flex lines stretch to take up the remaining space.
+        {align-content: flex-start;}
+            Flex lines packed to the start of the flex container.
+        {align-content: flex-end;}
+            Flex lines packed to the end of the flex container.
+        {align-content: center;}
+            Flex lines packed to the center of the flex container.
+        {align-content: space-between;}
+            Flex lines evenly distributed; the first line is at the start of the flex container while the last one is at the end.
+        {align-content: space-around;}
+            Flex lines evenly distributed with equal space around each line
+
+            Modifies the behavior of the flex-wrap property. It is similar to align-items, but instead of aligning flex items, it aligns flex lines.
+            This property has no effect when there is only one line of flex items.
+
+Grid Display:
+        
+    The Grid Layout (Grid), is a two-dimensional grid-based layout system that aims to do nothing less than completely change the way grid-based user interfaces are designed. CSS has always been used to lay out web pages, but it's never done a very good job of it. First, tables were used, then floats, then positioning and inline-blocks, but all of these methods are essentially hacks and leave out a lot of important functionality (vertical centering for instance). Flexbox helps, but it's intended for simpler one-dimensional layouts, not complex two-dimensional ones (Flexbox and Grid actually work very well together). Grid is the very first CSS module created specifically to solve the layout problems people have been hacking their way around for as long as making a website was a possibility.
+
+    Since grid is a whole module and not a single property, it involves a lot of things including its whole set of properties. Some of them are meant to be set on the container (parent element, called [grid container]) whereas the others are meant to be set on the children (called [grid items]).
+        
+    Grid items are basically any element that is set within the grid.
+        
+    A grid is an intersecting set of horizontal and vertical lines; one setting rows and the other setting columns, respectively.
+    grid items can be placed onto the grid, respecting these column and row lines.
+    Rows start from the top side of the grid container and go down until the end of the bottom side.
+    Columns start from the left side of the grid container and go sideways until the end of the right side.
+        
+    The Implicit Grid is basically an invisible imaginary grid, without proportions, in which grid items are set.
+    Grid items can be implicitly set (positioned and named) within the implicit grid, but won't be visible if they aren't explicitly set.
+    Grid items can be implicitly positioned within the implicit grid with the grid-row-start, grid-column-start, grid-row-end, grid-column-end, grid-row and grid-column properties.
+    Implicitly positioned items should be named (necessary to be explicitly set) with the grid-area property.
+        
+    The explicit grid is basically a visible grid, a template with proportions and measurements for one or more of its grid items.
+    To show implicitly set grid items within an explicit grid, a template with measurements must be created.
+    This is done with the grid-template-rows, grid-template-columns, and grid-template-areas properties.
+    These properties basically declare already implicitly set grid items, locate them into columns and rows that correspond with their positions in the implicit grid, and add measurements to the grid items within.
+        
+    Grid Items can overlap each other. You can use the z-index property to control their stacking order.
+        
+        Grid Line:
+            The dividing lines that make up the structure of the grid. They can be either horizontal ("row grid lines") or vertical ("column grid lines") and reside on either side of a row or column. Here the yellow line is an example of a column grid line.
+        
+            The location of a grid line within a grid is defined by its location relative to the first grid line of its same orientation.
+            For, example, imagine four vertical lines in an imaginary grid, that go from the left side to the right side.
+            The first line would define the start of the imaginary grid, and the fourth line would define the end of the imaginary grid.
+            The locations of those lines along the grid would be 1, 2, 3, and 4.
+        
+            Now, imagine four horizontal lines in an imaginary grid, that go from top to bottom.
+            The first line would define the start of the imaginary grid, and the fourth line would define the end of the imaginary grid.
+            The locations of those lines along the grid would be 1, 2, 3, and 4.
+        
+            Imagine I want to locate a box in the top left corner of the grid.
+            Its top side would be part of the horizontal line 1, and its bottom would be part of the horizontal line 2.
+            Its left side would be part of the vertical line 3, and its right side would be part of the vertical line 4.
+            There it is, all the item's sides are located within the imaginary grid
+            
+            Locating a grid item in the implicit grid by refering to specific grid lines works in the same way, but you can have as many lines as you want to instead of just 4.
+
+        Grid Track:
+            The space between two adjacent grid lines. You can think of them like the rows or columns of the grid.
+
+        Grid Cell:
+            The space between two adjacent row grid lines and two adjacent column grid lines (a box). It's a single "unit" of the grid.
+
+        Grid Area:
+            The total space surrounded by four grid lines. A grid area may be comprised of any number of grid cells.
+            
+        The float, clear and vertical-align properties have NO effect on a grid item.
+        
+    Grid Item (Child) Properties:
+        
+        {grid-row-start: 3;}
+            Selects a vertical line location within the implicit grid, in which the grid item's left side will be.
+        {grid-column-start: name-1;}
+            Selects a horizontal line location within the implicit grid, in which the grid item's top side will be.
+        {grid-row-end: 4;}
+            Selects a vertical line location within the implicit grid, in which the grid item's right side will be.
+        {grid-column-end: name-2;}
+            Selects a horizontal line location within the implicit grid, in which the grid item's bottom side will be.
+            
+            Determines a grid item's location within the implicit grid by referring to specific grid lines by their locations or set names (grid line names can be set with the grid-template-rows and grid-template-columns properties).
+        
+            All four properties must be specified to set a grid item's location succesfully.
+            Negative values are allowed.
+        
+        {grid-row: 6 / 7;}
+        {grid-column: name-1 / 4;}
+            Shorthand property for grid-row-start + grid-row-end, and grid-column-start + grid-column-end, respectively.
+            Negative values are allowed.
+        
+        {grid-area: name}
+            Names a grid area so it can be referenced by an explicit grid template.
+            All grid items should be named, as this is necessary if they are going to be explicitly set.
+            Alternatively, this property can be used as an even shorter shorthand property for grid-row + grid-column.
+            Negative values are allowed.
+        
+                .grid-item-1 {
+                  grid-area: header;
+                }
+                .grid-item-2 {
+                  grid-area: main;
+                }
+
+            The code snippet above shows two named grid areas.
+    
+                .grid-item-1 {
+                  grid-area: 1 / name-1 / name-2 / 6
+                }
+
+            The example above shows the area shorthand property in use.
+            The syntaxis for the area shorthand propertyis grid-row-start / grid-column-start / grid-row-end / grid-column-end.
+        
+        {justify-self: stretch;}
+            Default. The contents of an individual grid item fill the whole width of the grid area.
+        {justify-self: start;}
+            Aligns the contents of an individual grid item to the left of the grid area.
+        {justify-self: end;}
+            Aligns the contents of an individual grid item to the right of the grid area.
+        {justify-self: center;}
+            Aligns the contents of an individual grid item to the center of the grid area.
+
+            This property aligns the contents of an individual grid item horizontally (as opposed to justify-self which aligns the contents of an individual grid item's contents vertically).
+            This behavior can also be set for the contents of all grid items via the align-items property. 
+
+        {align-self: stretch;}
+            Default. The contents of an individual grid item fills the whole height of the grid area.
+        {align-self: start;}
+            Aligns the contents of an individual grid item to the top of the grid area.
+        {align-self: end;}
+            Aligns the contents of an individual grid item to the bottom of the grid area.
+        {align-self: center;}
+            Aligns the contents of an individual grid item to the center of the grid area.
+
+            This property aligns the contents of an individual grid item vertically (as opposed to justify-self which aligns the contents of an individual grid item's contents horizontally).
+            This behavior can also be set for the contents of all grid items via the align-items property. 
+        
+    Grid Container (Parent) Properties:
+        
+        {display: grid;}
+            Defines a block grid container.
+        {display: inline-grid;}
+            Defines an inline grid container.
+        {display: subgrid;}
+            If your grid container is itself a grid item (i.e. nested grid), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.
+        
+            Defines the element as a grid container and establishes a new grid formatting context for its contents.
+        
+                        <div class="grid-container">
+                    <div class="grid-item-1"></div>
+                    <div class="grid-item-2"></div>
+                    <div class="grid-item-3"></div>
+                </div>
+        
+            The code snippet above shows an example grid container and some grid items inside.
+
+        {grid-template-rows: 50px, 20%, 40px;}
+        {grid-template-columns: 100px 40% 20px;}
+            Specifies the rows and columns of the explicit grid template with a space-separated list of values.
+            The values represent the track sizes, and the spaces between them represent grid lines.
+            No negative values are allowed.
+        
+            {grid-template-rows: [row-1-start] 50px [row-1-end] 20% [row-2-end] 40px [row-3-end];}
+            {grid-template-columns: [col-1-start] 50px, [col-1-end] 20%, [col-2-end] 80px [col-3-end];}
+        
+            You can also choose to set a name for the lines by putting them within square brackets ([]).
+
+                .grid-container {
+                  grid-template-rows: [row-1-start] 25% [row1-end row2-start] 25% [row2-end];
+                }
+
+                .grid-container {
+                  grid-template-rows: [row-1-start] 25% [row1-end] [row2-start] 25% [row2-end];
+                }
+        
+            A line can have more than one name.
+            In the code snippets above, the second line will have two names: row1-end and row2-start.
+        
+                .grid-container {
+                  grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;
+                }
+
+            The code snippet above is equal to:
+        
+                .grid-container {
+                  grid-template-columns: repeat(3, 20px [col-start]) 5%;
+                }
+        
+            If your definition contains repeating parts, you can use the repeat() notation to streamline things
+            The code snippet above shows the correct repeat() syntaxis.
+    
+                .grid-container {
+                  grid-template-columns: 1fr 1fr 1fr;
+                }
+
+                .grid-container {
+                  grid-template-columns: 1fr 50px 1fr 1fr;
+                }
+        
+            The code snippets above show how to use the [fr] unit.
+            Each value in the first code snippet will occupy 1/3 of its container.
+            The values in the second code snippet are 1/3 of the free space, 50px, 1/3 of the free space, and 1/3 of the free space respectively.
+            The [fr] unit allows you to set the size of a track as a fraction of the free space of the grid container.
+        
+        {grid-template-areas: "name-1 name-1 name-1" "name-2 . ." "name-3 name-4 name-4";}
+            Specifies an explicit grid template by referencing the names of the grid-areas within the implicit grid, implying they were already declared with the grid-area property.
+            
+            Repeating the name of a grid area more than once in a declaration spans (merges) those cells into one larger cell in the explicit grid template. A dot signifies an empty cell; empty cells won't display in explicit grid templates. You can use any number of adjacent dots to declare a single empty cell. As long as the dots have no spaces between them they represent a single cell.
+        
+            The syntax of this property itself provides a visualization of the structure of the grid as it shows each row and its constituting cells between separate quotation marks.
+            To define a row you must first open a quotation mark and declare each cell within the row by its name, after all cell names are declared, close the row with another quotation mark. To add more rows just add a space and repeat this process.
+            Each row in your declaration needs to have the same number of cells.
+        
+                .grid-item-1 {
+                  grid-area: header;
+                }
+                .grid-item-2 {
+                  grid-area: main;
+                }
+                .grid-item-3 {
+                  grid-area: sidebar;
+                }
+                .grid-item-4 {
+                  grid-area: footer;
+                }
+        
+                .grid-container {
+                    grid-template-rows: auto;
+                    grid-template-columns: 50px 50px 50px 50px;
+                    grid-template-areas: "header header header header" "main main . sidebar" "footer footer footer footer";
+                }
+        
+            The code snippet above creates a grid that is three rows tall by four columns wide.
+            Each row is equal to 1/3 of the container's height.
+            Each column is 50px in width.
+            The entire top row will be comprised of the header area.
+            The middle row will be comprised of two main areas, one empty cell, and one sidebar area.
+            The entire top row will be comprised of the footer area.
+            
+            Notice that you're not naming lines with this syntax, just areas. But when you use this syntax the lines on either end of the areas are actually getting named automatically. For example, if the name of a grid area is X, the name of the area's starting row line and starting column line will be X-start, and the name of its last row line and last column line will be X-end. This means that some lines might have multiple names, such as the far left line in the above grid-template-areas example, which will have three names: header-start, main-start, and footer-start.
+        
+        {grid-template: 25px 25px }
+            Shorthand property for setting explicit grid template's rows, columns, and areas in a single declaration.
+            Rows go first, then after a slash (/), columns; the grid area declaration may go dispersed anywhere in between.
+            No negative values are allowed.
+        
+                .container {
+                  grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];
+                  grid-template-columns: auto 50px auto;
+                  grid-template-areas: 
+                    "header header header" 
+                    "footer footer footer";
+                }
+        
+            The code snippet above is equal to:
+        
+                .container {
+                  grid-template:
+                    [row1-start] "header header header" 25px [row1-end]
+                    [row2-start] "footer footer footer" 25px [row2-end]
+                                    / auto 50px auto;
+                }
+
+            The code snippet above creates a grid that is two rows tall by three columns wide.
+            Each row is 25px in width.
+            The values of the columns are 1/2 of the free space, 50px, and 1/2 of the free space respecitvely.
+
+        {grid-row-gap: 15px}
+        {grid-column-gap: 10px}
+            Specifies the size of the grid lines in the explicit grid template. You can think of it like setting the width of the spaces between the explicit template's rows and columns.
+            The spaces are only created between the rows/columns, NOT on the outer edges of the grid container.
+            No negative values are allowed.
+
+                .grid-container {
+                  grid-template-columns: 100px 50px 100px;
+                  grid-template-rows: 80px auto 80px; 
+                  grid-row-gap: 15px;
+                  grid-column-gap: 10px;
+                }
+
+            The code snippet above show how to use the grid-row-gap and the grid-column-gap properties.
+        
+        {grid-gap: 15px 10px;}
+            Shorthand property to specify the size of the horizontal and vertical grid lines respectively.
+            No negative values are allowed.
+
+        {justify-items: stretch;}
+            Default. Grid item contents fill the whole width of the grid area.
+        {justify-items: start;}
+            Aligns grid item contents to the the top of the grid area.
+        {justify-items: end;}
+            Aligns grid item contents to the bottom of the grid area.
+        {justify-items: center;}
+            Aligns grid item contents to the center of the grid area.
+        
+            This property aligns the grid item contents horizontally (as opposed to the align-items property, which aligns the grid item contents vertically).    
+            This behavior can also be set on individual grid items via the justify-self property.
+        
+        {align-items: stretch;}
+            Default. Grid item contents fill the whole height of the grid area.
+        {align-items: start;}
+            Aligns grid item contents to the the left of the grid area.
+        {align-items: end;}
+            Aligns grid item contents to the right of the grid area.
+        {align-items: center;}
+            Aligns grid item contents to the center of the grid area.
+        
+            This property aligns the grid item contents vertically (as opposed to the justify-items property, which aligns the grid item contents horizontally).          
+            This behavior can also be set on individual grid items via the align-self property.
+        
+        {justify-content: stretch;}
+            Default. Resizes grid items to allow them to fill the full width of the grid container
+        {justify-content: start;}
+            Aligns the grid to the left of the grid container.
+        {justify-content: end;}
+            aligns the grid to the right of the grid container
+        {justify-content: center;}
+            aligns the grid in the center of the grid container
+        {justify-content: space-between;}
+            Places an even amount of space between each grid item, with no space at the far ends
+        {justify-content: space-around;}
+            Places an even amount of space between each grid item, including the far ends.
+        {justify-content: space-evenly;}
+            Places an even amount of space between each grid item, with no space at the far ends.
+        
+            Sometimes the total size of your grid might be less than the size of its grid container.
+            This could happen if all of your grid items have a fixed size (in px).
+            In this case you can set the alignment of the grid within the grid container.
+            This property aligns the grid horizontally (as opposed to the align-content property, which aligns the grid vertically).
+
+        {align-content: stretch;}
+            Default. Resizes grid items to allow them to fill the full height of the grid container
+        {align-content: start;}
+            Aligns the grid to the top of the grid container.
+        {align-content: end;}
+            Aligns the grid to the bottom of the grid container
+        {align-content: center;}
+            Aligns the grid in the center of the grid container
+        {align-content: space-between;}
+            Places an even amount of space between each grid item, with no space at the far ends
+        {align-content: space-around;}
+            Places an even amount of space between each grid item, including the far ends.
+        {align-content: space-evenly;}
+            Places an even amount of space between each grid item, with no space at the far ends.
+        
+            Sometimes the total size of your grid might be less than the size of its grid container.
+            This could happen if all of your grid items have a fixed size (in px).
+            In this case you can set the alignment of the grid within the grid container.
+            This property aligns the grid vertically (as opposed to the align-content property which aligns the grid horizontally).

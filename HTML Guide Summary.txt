@@ -1,0 +1,426 @@
+﻿HTML Guide/Summary
+
+Since some terms involved here can be very conceptually similar, it won't be hard to confuse them with one another (or with unrelated words) if you don't first memorize their meanings.
+Most terms covered in this guide will depend on the understanding of certain specialized concepts.
+This is written so each and every specialized term and concept used will have been already defined in a previous section.
+If you read this carefully and in order most concepts will be clear.
+
+HTML (Hypertext Markup Language):
+
+    HTML means Hypertext Markup Language.
+    Hypertext is text that links (hyperlink) topics on screen to related information and graphics.
+    A markup language is a language made up of symbols and codes, and meant to be read by a specialized program.
+    When markup languages are read, they specify how these symbols should be displayed by the specialized program.
+
+    HTML is essentially a system for interpreting tagged symbols and codes inserted in a document to achieve basic text, graphic, and hyperlink effects.
+
+    It is important to know that content created in HTML is formatless, and is positioned in one of three formats by default: inline, block, and table.
+
+    HTML documents are formatted with CSS, a graphic design markup language.
+
+HTML Tags, Elements, Attributes and Values:
+
+    [Tags] are used to mark up the start and end of an element.
+    [Elements] represent some kind of structure or semantics and consist of a start tag, content, and an end tag.
+    [Attributes] define the properties an element and their [values] determine how they do so.
+    They consist of an [attribute]/[value] pair, and appear within the element's start tag.
+    An element's start tag may contain any number of space separated [attribute]/[value] pairs.
+
+        <tag>content</tag>
+
+        <tag attribute="value">content</tag>
+
+    The code snippets (fragments of code) above show the syntaxis of two HTML elements.
+
+HTML Comments:
+
+    HTML comments won't be read by the browser.
+    They are useful for developers as they can leave any comment explaining a code snippet's purpose without interfering with the code.
+    HTML Comments must start with a left arrow head followed by two hashes (<--) and end with an two hashes followed by a left arrow head (-->).
+
+        <!-- This is an HTML Comment -->
+
+Strings:
+
+    A string is any set of characters within quotation marks.
+    To include quotation marks within a string use the single quotation marks.
+    Single quotation mark strings are also strings.
+
+        "This is a string"
+        " 1 2 3 4 5 6 7 8 9 0 "
+        "¡!¿?:;&#$()+-*/%="
+        "                     "
+        '"q. marks within q. marks"'
+        'also a string'
+
+Nesting:
+
+    HTML tags are similar to boxes around content.
+    Sometimes you need to place boxes inside of other boxes.
+    Those "inner" boxes are nested inside of others.
+    When you nest tags (put them inside other tags), you have to close any [inner] tags before you can close the [outer] tags.
+
+        <outer>
+            <inner>
+            </inner>
+        </outer>
+
+        <nesting>
+            <nested>
+            </nested>
+        </nesting>
+
+    The name given to an element that contains other elements but contained by none is [root element].
+    Press [tab] on your keyboard to jump one level from the root element's level.
+
+        <root-element>
+            <1-level-nested>
+                <2-level-nested>
+                    <etc></etc>
+                </2-level-nested>
+            </1-level-nested>
+        </root-element>
+
+    When an element (outer tag + content + outer tag) is nested within the root element it is called a 1 level nested element.
+    When an element is nested within a 1 level nested element it is called a 2 level nested element. And so on.
+    This concept can be defined as nesting level.
+
+    Different relationships between nested elements from the perspective of a [child] element:
+
+            <ancestor>
+                <ancestor>
+                    <parent>
+                        *<child></child>*
+                        <sibling></sibling>
+                    </parent>
+                </ancestor>
+            </ancestor>
+
+        The element directly nesting it (the [child]) is its [parent].
+        The element in its same level is its [sibling].
+        The [child] is also its [sibling's] [sibling].
+        Any element nesting its [parent] is its [ancestor] (indirect).
+        Its [parent] also counts as an [ancestor] (direct).
+        The [child] is also the [descendant] of any of its [ancestors].
+
+Frequent Used Attributes.
+
+    id=""
+        Attribute used to identify a unique object in CSS. Can only be used in one element.
+
+    class=""
+        Attribute used to identify an object class in CSS. Can be used in many elements at once.
+
+    style=""
+        Attribute used to edit the CSS properties of an element while staying within HTML.
+        Any property can be added and edited.
+        It can be used in any element.
+        It is not reccomended to use this attribute unless it is for testing purposes.
+
+    lang=""
+        Attribute used to specify the language of an element's content.
+        The language is expressed in laguage codes.
+        Common laguage codes are: en (english), es (spanish), pt (portuguese), fr (french), it (italian), de (german), ru (russian) and chinese (zh). 
+        For more language codes, search "ISO 639-1 language codes".
+
+Block Element:
+
+    Always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can). Important block elements: <section>, <div>, <header>, <nav>, <main>, <article>, <aside>, <form>, <h1>-<h6>, <p>, <blockquote>, <ol>, <ul>, <dl>, <table>, <figure>, <video>, <footer>, <address>.
+		
+Inline Element:
+
+    It does not start on a new line and only takes up as much width as necessary. Important inline elements: <span>, <a>, <b>, <strong>, <i>, <em>, <code>, <sub>, <sup>, <abbr>, <q>, <label>.
+			
+Table Element: 
+
+    Always starts on a new line and only takes up as much width as necessary. Important inline elements: <table>.
+
+From this point on, the different HTML elements and their attributes (displayed as code snippets) will be located where they would normally be located in an HTML document (in the same nesting level), but tags will not nest other elements as they normally would (instead they will immediately close).
+Explanations will be located one line after their respective elements.
+
+<!DOCTYPE html>
+    HTML Document Declaration (Hypertext Markup Lanugage).
+    This tag doesn't close.
+    It helps the browser identify what kind of document it will be processing.
+
+<html></html>
+    HTML element, contains the head and body elements.
+    Root element in HTML.
+
+    <head></head>
+        Contains all the invisible parts of the code.
+        Includes a title for the document, scripts, styles, meta information, and more.
+
+	<title></title>
+	    Defines a title for your HTML document.
+
+	<meta/>
+	    Provides metadata about the HTML document.
+
+	<meta charset="utf-8"/>
+	    Set the encoding of the HTML document to Unicode UTF-8.
+	<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+	    Defines keywords for search engines.
+	<meta name="description" content="Free Web tutorials on HTML and CSS">
+	    Defines a description of your web page.
+	<meta name="author" content="John Doe">
+	    Defines the author of a page.
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    Sets the viewport (user's visible page area) to make your website look good on all devices.
+	
+	    SEO (Search Engine Optimization):
+                Page title – 70 characters.
+               	Meta description – 160 characters.
+               	Meta keywords – No more than 10 key phrases.
+
+	<base href=""/>
+	    Defines relative URL for future 'src=""'s.
+
+	<link href="" rel="" type="" media=""/>
+            Link to other pages using the link element instead of using <script></script> or <style></style> in HTML.
+		href=""
+                    Defines the URL of the linked page (Hypertext Reference), as internal URL (computer) or external (web).
+                rel=""
+                    Defines the relationship between the actual document and the linked one (Relationship). rel attribute values: alternate, author, dns-prefetch, help, icon, license, next, pingback, preconnect, prefetch, preload, prerender, prevsearch, stylesheet.
+		type=""
+                    Defines the linked document type. Examples: text/css, text/javascript.
+                media=""
+                    Defines in what kind of media the document will be executed.
+
+        <link href="http://www.imagehostingsite.com/image.ico" rel="shortcut icon"/>
+            Sets the favicon (small image on browser tabs)
+
+	<noscript></noscript>
+	    Alternate element in case the user's browser deactivated javascript or doesn't support it. E.g. "Please enable Javascript to view this content.".
+
+    <body></body>
+	Contains all the invisible parts of the code.
+
+	<section></section>
+	    Defines sections in a document, such as chapters, headers, mains, footers, or any other sections of the document.
+		
+	<div></div>
+	    (Division) it is often used as a container for other HTML elements and can be used to style blocks of content by assigning it a class or selecting it in CSS.
+			
+            <span></span>
+                (Span) it is often used as a container for some text and can be used to style parts of the text by assigning it a class or selecting it in CSS.
+
+		<header></header>
+		    Header section.
+			
+		    <nav></nav>
+			Navigation bar.
+				
+		<main></main>
+		    Main section.
+			
+		        <article></article>
+		            Article.
+				
+                <aside></aside>
+            	    Aside section.
+
+		    <h1></h1><h2></h2><h3></h3><h4></h4><h5></h5><h6></h6>
+		        Headings ranging from biggest (1) to smallest (6).
+
+		    <p></p>
+		        Paragraph.
+					
+		    <a href=""></a>
+		        A hyperlink, which is used to link from one page to another.
+		            href=""
+                                Defines the URL of the linked page (Hypertext Reference), as internal URL (computer) or external (web).
+					
+		    <b></b><strong></strong>
+		        Bold, Strong text.
+						
+	            <i></i><em></em>
+		        Italic, Emphasised text.
+            
+                    <code></code>
+		        Strip of code.			
+            
+		    <sub></sub>
+		        Subscripted text.
+						
+		    <sup></sup>
+		        Superscripted text.
+						
+		    <abbr title="World Health Organization">WHO</abbr>
+		        Abbreviation (optional but not necessary tag).
+			    title=""
+                                Text displayed on hover.
+            
+                    <q></q>
+                        Quote. Adds quotation marks before and after content (optional but not necessary tag).
+            
+		    </br>
+		        Line break (new line).
+            
+
+            
+		    <blockquote></blockquote>
+		    Block quote (Indented quotation marks) (optional but not necessary tag).
+					
+		    <ol></ol>
+		        Ordered List (numbered).
+					
+		    <ul></ul>
+		        Unordered List (bulletpoints).
+
+		        <li></li>
+		            List Item (format defined by parents).
+
+		    <dl></dl>
+		        Description List.
+					
+		        <dt></dt>
+			    Descripted Title.
+					
+		        <dd></dd>
+			     Descripted Title Description.
+
+		    <table></table>
+		        Table.
+            
+                        <caption></caption>
+                            Centered table caption (optional but not necessary tag).
+					
+		        <thead></thead>
+			    Table Header.
+            
+		            <tr></tr>
+			        Table Row.
+							
+			        <th></th>
+			            Table Header Cell (bolded font).
+								
+		        <tbody></tbody>
+		            Table Body.
+						
+			    <tr></tr>
+			        Table Row.
+						
+			        <td></td>
+			            Table Description Cell (normal font).
+
+		    <figure></figure>
+		        Used to place graphic elements.
+				
+		        <img src="" alt="" width="400" height="400"/>
+		            Image.
+			        src=""
+                                    Source URL.
+			        alt=""
+                                    Alternate text in case image fails to load.
+			        width=""
+                                    Width in pixels.
+			        height=""
+                                    Height in pixels.
+					
+		            <figcaption src="" alt="" width="400" height="400"></figcaption>
+			        Indented caption for image (optional but not necessary tag).
+					
+		    <audio width="400" height="400" controls>fallback text</audio>
+		        Displays a player and and plays an audio file.
+			    controls If controls is present, the audio controls should be displayed (such as a play/pause button etc).
+		        Any text between the audio tags will be displayed in browsers that do not support the audio element.
+					
+		        <source src=".ogg" type="audio/ogg"/>
+		        <source src=".mp3" type="audio/mpeg"/>
+		        <source src=".wav" type="audio/wav"/>
+		            Used to specify fallback media resources for media elements (nested within audio element).
+					
+		    <video width="400" height="400" controls>fallback text</video>
+		        Displays a player and and plays an video file.
+		            controls If controls is present, the video controls should be displayed (such as a play/pause button etc).
+		        Any text between the audio tags will be displayed in browsers that do not support the video element.
+					
+		        <source src=".mp4" type="video/mp4"/>
+		        <source src=".ogg" type="video/ogg"/>
+		        <source src=".webm" type="video/webm"/>
+		            Used to specify multiple media resources for media elements (nested within video element).
+					
+		        <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English"/>
+		        <track src="subtitles_es.vtt" kind="subtitles" srclang="es" label="Español"/>
+			    Specifies subtitles for video elements.
+			        srclang=""
+                                    Abbreviated subtitle language.
+			        label=""
+                                    Subtitle language.
+					
+		    <object data="" type="" width="400" height="400" ></object>
+		        Used to insert files.
+			    data=""
+                                URL for the file.
+			    type="application/javascript"
+                                For a javascript app.
+			    type="application/pdf"
+                                For a pdf file.
+			    type="application/vnd.adobe.flash-movie"
+                                For a flash file.
+					
+		    <form action="" method="get"></form>
+		        Form containing data submitted by user, will mostly contain input elements, text areas, and select lists.
+                        The user generated data is submitted by an <input type="submit" value="Submit"> tag within the form element.
+			    action=""
+                                Specifies the URL of a server-page the form-data will be sent to.
+			    method=""
+                                Specifies the method in which the data will be submitted. method attribute values: get (Default. Appends the form-data to the URL in name/value pairs: URL?name=value&name=value), post (Sends the form-data as an HTTP post transaction).		
+
+		        <input type="" value="" placeholder="" required/>
+			    Inserts an element the user can interact with.
+			        type=""
+                                    Type of input.
+                                    Type attribute values: button, checkbox (multiple checks available), radio (one check available), date, datetime-local, month, email, file, fileupload, hidden, image, number, password, range, reset, search, submit, tel, text, time,  url.
+			        value=""
+                                    Specifies the value of the Input element.
+			        required
+                                    If required is present, completing this input is required before submitting the form.
+			        placeholder=""
+                                Places a grey placeholder text when possible.
+					
+			    <label for=""></label>
+			        If the label text is clicked, the referenced element is activated. Useful to interact with input elements.
+				    for=""
+                                        Makes reference to the id attribute value of an input element.
+
+		        <textarea rows="40" cols="10" placeholder="" required></textarea>
+                            Creates a text input area.
+                                rows="" cols=""
+                                    Define the height (rows) and width(cols) of the text area.
+		                required
+                                    If required is present, completing this input is required before submitting the form.
+
+		        <select></select>
+		        Creates a drop-down list.
+					
+		            <option value=""></option>
+			        Defines an option in a select list.
+			            value=""
+                                        Option name.
+					
+		        <optgroup label=""></optgroup>
+	                    Used to group related options in a drop-down list. Not necessary for declaring option elements.
+		                label=""
+                                    Option group name.
+					
+		            <option value=""></option>
+			        Defines an option in a select list.
+		                    value=""
+                                        Option name.
+					
+		        <datalist></datalist>
+		            Used to provide an "autocomplete" feature on <input> elements.
+                            Users will see a drop-down list of pre-defined options as they input data.
+					
+		            <option value=""></option>
+			        value=""
+                                    Option name.
+
+                <footer></footer>
+	            Footer section.
+			
+	            <address></address>
+	                Contact information (optional but not necessary tag).
+            
