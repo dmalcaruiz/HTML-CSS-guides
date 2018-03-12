@@ -1,6 +1,6 @@
 How To - Tabs:
     
-Learn how to create tabs with CSS and JavaScript.
+Create tabs with CSS and JavaScript.
 Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects:
 
     Togglable Tabs:
@@ -133,7 +133,7 @@ Tabs are perfect for single page web applications, or for web pages capable of d
 
 How To - Dropdowns:
     
-Learn how to create a hoverable dropdown menu with CSS.
+Create a hoverable dropdown menu with CSS.
 A dropdown menu is a toggleable menu that allows the user to choose one value from a predefined list:
 
     Hoverable Dropdown:
@@ -219,7 +219,7 @@ A dropdown menu is a toggleable menu that allows the user to choose one value fr
 
 How To - Accordions:
     
-Learn how to create an accordion (collapsible content).
+Create an accordion (collapsible content).
 Accordions are useful when you want to toggle between hiding and showing large amount of content:
 
     Accordion:
@@ -342,7 +342,7 @@ Accordions are useful when you want to toggle between hiding and showing large a
 
 How To - Weight converter:
 
-Learn how to create a weight converter with HTML and JavaScript.
+Create a weight converter with HTML and JavaScript.
 
     Weight Converter:
 
@@ -381,7 +381,7 @@ Learn how to create a weight converter with HTML and JavaScript.
 
 How To - Animated Buttons:
     
-Learn how to animate buttons using CSS.
+Animate buttons using CSS.
 
     Pressed effect on click:
 
@@ -473,7 +473,7 @@ Learn how to animate buttons using CSS.
 
 How To - Side Navigation:
     
-Learn how to create an animated, closable side navigation menu.
+Create an animated, closable side navigation menu.
 
     Animated Side Navigation:
 
@@ -655,7 +655,7 @@ Learn how to create an animated, closable side navigation menu.
 
 How To - Top Navigation:
     
-Learn how to create a top navigation bar with CSS.
+Create a top navigation bar with CSS.
 
     Top Navigation Bar:
 
@@ -700,7 +700,7 @@ Learn how to create a top navigation bar with CSS.
 
 How To - Modal Boxes:
     
-Learn how to create a Modal Box with CSS and JavaScript.
+Create a Modal Box with CSS and JavaScript.
 
     Modal Box:
 
@@ -849,7 +849,7 @@ Learn how to create a Modal Box with CSS and JavaScript.
 
 How To - Progress Bars:
 
-Learn how to create a Progress Bar with CSS and JavaScript.
+Create a Progress Bar with CSS and JavaScript.
 
     Progress Bar:
 
@@ -932,7 +932,7 @@ Learn how to create a Progress Bar with CSS and JavaScript.
 
 How To - Parallax:
     
-Learn how to create a "parallax" scrolling effect with CSS.
+Create a "parallax" scrolling effect with CSS.
 
     Parallax:
 
@@ -940,7 +940,7 @@ Learn how to create a "parallax" scrolling effect with CSS.
 
     Note: Parallax scrolling does not always work on mobile devices/smart phones. However, you can use media queries to turn off the effect on mobile devices (see last example on this page).
 
-    How To Create a Parallax Scrolling Effect:
+    Parallax Scrolling Effect:
 
     Use a container element and add a background image to the container with a specific height. Then use the background-attachment: fixed to create the actual parallax effect. The other background properties are used to center and scale the image perfectly:
 
@@ -998,7 +998,7 @@ Learn how to create a "parallax" scrolling effect with CSS.
 
 How To - Login Form:
     
-Learn how to create a responsive login form with CSS.
+Create a responsive login form with CSS.
 
     Login Form:
 
@@ -1219,7 +1219,7 @@ Learn how to create a responsive login form with CSS.
 
 How To - HTML Includes:
 
-Learn how to include HTML snippets in HTML.
+Include HTML snippets in HTML.
 
 Save the HTML you want to include in an .html file:
 
@@ -1285,7 +1285,7 @@ Save the HTML you want to include in an .html file:
     
 How To - Google Maps:
 
-Learn how to add a Google Map to a web page.
+Add a Google Map to a web page.
 
     Start with a simple basic web page.
     Add a <div> element where you want the map to display:
@@ -1334,7 +1334,7 @@ Learn how to add a Google Map to a web page.
 
 How To - Range Sliders:
 
-Learn how to create custom range sliders with CSS and JavaScript.
+Create custom range sliders with CSS and JavaScript.
 
     Range Slider:
 
@@ -1457,7 +1457,7 @@ Learn how to create custom range sliders with CSS and JavaScript.
     
 How To - Tooltips:
 
-Learn how to create tooltips with CSS.
+Create tooltips with CSS.
 
     Step 1) Add HTML:
 
@@ -1518,7 +1518,7 @@ Learn how to create tooltips with CSS.
 
 How To - Slideshow:
     
-Learn how to create a responsive slideshow with CSS and JavaScript.
+Create a responsive slideshow with CSS and JavaScript.
 
     Slideshow / Carousel:
     A slideshow is used to cycle through elements:
@@ -1734,7 +1734,7 @@ Learn how to create a responsive slideshow with CSS and JavaScript.
 
 How To - Filter List:
 
-    Learn how to use JavaScript to search for items in a list.
+Use JavaScript to search for items in a list.
 
         Search List:
 
@@ -1819,7 +1819,7 @@ How To - Filter List:
     
 How To - Sort List:
 
-Learn how to sort an HTML list, using JavaScript.
+Sort an HTML list, using JavaScript.
 
     Sort Function:
 
