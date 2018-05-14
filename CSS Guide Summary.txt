@@ -1109,6 +1109,10 @@ Font and Text Properties:
 
     {hanging-punctuation: first;}
         Makes the quotation marks go outside content boxes, and thus harmonizing the text with the all of the unquoted paragraphs.
+	
+    {shape-outside: url(leaf.png);
+    shape-margin: 15px;}
+	lets text flow automatically around a given image's shape.
 
 Font-Face At-Rule:
 
